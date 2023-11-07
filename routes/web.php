@@ -3,6 +3,8 @@
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\DataPegawaiController;
 use App\Http\Controllers\Admin\KriteriaController;
+use App\Http\Controllers\Admin\PenilaianController;
+use App\Http\Controllers\Admin\KlasifikasiController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -35,26 +37,17 @@ Auth::routes();
     Route::resource('dashboard', DashboardController::class);
     Route::resource('data_pegawai', DataPegawaiController::class);
     Route::resource('kriteria', KriteriaController::class);
+    Route::resource('penilaian', PenilaianController::class);
+    Route::resource('klasifikasi', KlasifikasiController::class);
 // });
 
-// Route::get('/data_pegawai/create', function () {
-//     return view('admin.data_pegawai.create');
-// })->middleware(['auth', 'verified'])->name('data_pegawai.create');
 
-Route::get('/home', function () {
+Route::get('home', function () {
     return view('admin.index');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/cobalogin', function () {
     return view('admin.cobalogin');
-})->middleware(['auth', 'verified'])->name('cobalogin');
-
-Route::get('/penilaian', function () {
-    return view('admin.penilaian.create');
-})->middleware(['auth', 'verified'])->name('penilaian');
-
-Route::get('/klasifikasi', function () {
-    return view('admin.penilaian.klasifikasi');
 })->middleware(['auth', 'verified'])->name('cobalogin');
 
 Route::get('/hasil_penilaian', function () {

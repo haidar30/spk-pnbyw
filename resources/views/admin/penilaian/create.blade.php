@@ -39,52 +39,47 @@
                         @endif
                         <!-- Vertical Form -->
 
-                        <form class="row g-3" action="{{ isset($kriteria) ? 
-                        route('kriteria.update', $kriteria->id) : route('kriteria.store') }}"
-                        id="kriteria_form" method="POST">
+                        <form class="row g-3" action="{{ isset($penilaian) ? 
+                        route('penilaian.update', $penilaian->id) : route('penilaian.store') }}"
+                        id="penilaian_form" method="POST">
                             {!! csrf_field() !!}
-                            {!! isset($kriteria) ? method_field('PUT') : '' !!}
-                            @if(isset($kriteria))
-                                <input type="hidden" name="id" value="{{ $kriteria->id }}">
+                            {!! isset($penilaian) ? method_field('PUT') : '' !!}
+                            @if(isset($penilaian))
+                                <input type="hidden" name="id" value="{{ $penilaian->id }}">
                             @endif
                             <div class="col-12">
                                 <label for="validationDefault04" class="form-label"> Nama Pegawai
                                     <span class="required">*</span></label>
-                                <select class="form-select" name="bobot" id="bobot" required>
+                                <select class="form-select" name="id_pegawai" id="id_pegawai" required>
                                     <option selected disabled value="">Pilih Nama Pegawai</option>
-                                    <option value="10 {{ (isset($kriteria) && $kriteria->bobot == 1)
-                                        ? 'selected' : '' }}">Ahmad Zainudin</option>
-                                    <option value="20 {{ (isset($kriteria) && $kriteria->bobot == 2)
-                                        ? 'selected' : '' }}">Zulkarnaim Sohibul</option>
+                                    @foreach ($datapegawai as $item)
+                                        <option value="{{$item->id}}">{{$item->nama}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="col-12">
                                 <label for="validationDefault04" class="form-label">Bulan
                                     <span class="required">*</span></label>
-                                <select class="form-select" name="jenis" id="jenis" required>
+                                <select class="form-select" name="bulan" id="bulan" required>
                                     <option selected disabled value="">Pilih Bulan</option>
-                                    <option value="BENEFIT {{ (isset($kriteria) && $kriteria->bobot == 1)
-                                        ? 'selected' : '' }}">Januari</option>
-                                    <option value="CONST {{ (isset($kriteria) && $kriteria->bobot == 2)
-                                        ? 'selected' : '' }}">Februari</option>
+                                    <option>Januari</option>
+                                    <option>Februari</option>
                                 </select>
                             </div>
                             <div class="col-12">
                                 <label for="validationDefault04" class="form-label">Tahun
                                     <span class="required">*</span></label>
-                                <select class="form-select" name="jenis" id="jenis" required>
+                                <select class="form-select" name="tahun" id="tahun" required>
                                     <option selected disabled value="">Pilih Tahun</option>
-                                    <option value="BENEFIT {{ (isset($kriteria) && $kriteria->bobot == 1)
-                                        ? 'selected' : '' }}">2022</option>
-                                    <option value="CONST {{ (isset($kriteria) && $kriteria->bobot == 2)
-                                        ? 'selected' : '' }}">2023</option>
-                                    <option value="CONST {{ (isset($kriteria) && $kriteria->bobot == 3)
-                                        ? 'selected' : '' }}">2024</option>
+                                    <option>2022</option>
+                                    <option>2023</option>
+                                    <option>2024</option>
                                 </select>
                             </div>
+
                             <div class="card-body">
                                     <h5>Masukan Nilai Evaluasi Sesuai Kriteria</h5>
-                                    
+{{--                                     
                                     <div class="row mb-3">
                                         <label for="validationDefault04" class="col-md-2 col-form-label ">INTEGRITAS
                                             <span class="required">*</span></label>
@@ -111,12 +106,25 @@
                                                 ? 'selected' : '' }}">20</option>
                                         </select>
                                     </div>
-                                    </div>
+                                    </div> --}}
+
+                                    @foreach ($datakriteria as $item)
+                                        <div class="row mb-3">
+                                            <label for="validationDefault04" class="col-md-2 col-form-label ">{{$item->kriteria}}
+                                                <span class="required">*</span></label>
+                                        <div class="col-md-10">
+                                            {{-- <select class="form-select" name="bobot" id="bobot" required>
+                                                <option selected disabled value="">Nilai</option> --}}
+                                                <input class="form" type="text" name="" id="" >
+                                            {{-- </select> --}}
+                                        </div>
+                                        </div>
+                                    @endforeach
 
                             </div>
                             <div class="text-center">
                                 <button class="btn btn-primary" type="submit">Save</button>
-                                <a href="{{ route('kriteria.index') }}">
+                                <a href="{{ route('penilaian.create') }}">
                                     <button class="btn btn-secondary" type="reset">Clear</button>
                                 </a>
                             </div>

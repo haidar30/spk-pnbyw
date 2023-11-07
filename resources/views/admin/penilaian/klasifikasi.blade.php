@@ -37,32 +37,31 @@
                                         <div class="mb-3">
                                             <label for="validationDefault04" class="form-label">Bulan
                                                 <span class="required">*</span></label>
-                                            <select class="form-select" name="bobot" id="bobot" required>
+                                            <select class="form-select" name="bulan" id="bulan" required>
                                                 <option selected disabled value="">Pilih Bulan</option>
-                                                <option value="10 {{ (isset($kriteria) && $kriteria->bobot == 1)
-                                                    ? 'selected' : '' }}">Januari</option>
-                                                <option value="20 {{ (isset($kriteria) && $kriteria->bobot == 2)
-                                                    ? 'selected' : '' }}">Februari</option>
-                                                <option value="30 {{ (isset($kriteria) && $kriteria->bobot == 3)
-                                                    ? 'selected' : '' }}">Maret</option>
-                                                <option value="40 {{ (isset($kriteria) && $kriteria->bobot == 4)
-                                                    ? 'selected' : '' }}">April</option>
-                                                <option value="50 {{ (isset($kriteria) && $kriteria->bobot == 5)
-                                                    ? 'selected' : '' }}">Mei</option>
+                                                <option>Januari</option>
+                                                <option>Februari</option>
+                                                <option>Maret</option>
+                                                <option>April</option>
+                                                <option>Mei</option>
+                                                <option>Juni</option>
+                                                <option>Juli</option>
+                                                <option>Agustus</option>
+                                                <option>September</option>
+                                                <option>Oktober</option>
+                                                <option>November</option>
+                                                <option>Desember</option>
                                             </select>
                                         </div>
 
                                         <div class="mb-3">
                                             <label for="validationDefault04" class="form-label">Tahun
                                                 <span class="required">*</span></label>
-                                            <select class="form-select" name="bobot" id="bobot" required>
+                                            <select class="form-select" name="tahun" id="tahun" required>
                                                 <option selected disabled value="">Pilih Tahun</option>
-                                                <option value="10 {{ (isset($kriteria) && $kriteria->bobot == 1)
-                                                    ? 'selected' : '' }}">2021</option>
-                                                <option value="20 {{ (isset($kriteria) && $kriteria->bobot == 2)
-                                                    ? 'selected' : '' }}">2023</option>
-                                                <option value="30 {{ (isset($kriteria) && $kriteria->bobot == 3)
-                                                    ? 'selected' : '' }}">2024</option>
+                                                <option>2021</option>
+                                                <option>2023</option>
+                                                <option>2024</option>
                                             </select>
                                         </div>
                                         <div class="text-center">
@@ -85,14 +84,14 @@
                                 <table class="table table-striped">
                                     <thead>
                                     <tr>
-                                        <th scope="col">No</th>
-                                        <th scope="col">Jenis Kriteria</th>
-                                        <th scope="col">Bobot</th>
-                                        <th scope="col">Jenis</th>
+                                        <th scope="col">#</th>
+                                        <th scope="col"><i class="bi bi-bag-dash"></i> Jenis Kriteria</th>
+                                        <th scope="col"><i class="bi bi-receipt"></i> Bobot</th>
+                                        <th scope="col"><i class="bi bi-bag"></i> Jenis</th>
                                     </tr>
                                     </thead>
                                     
-                                    {{-- <tbody>
+                                    <tbody>
                                     @foreach ($kriteria as $item)
                                         <tr>
                                             <td>{{ $item->id }}</td>
@@ -101,7 +100,7 @@
                                             <td>{{ $item->jenis }}</td>
                                         </tr>
                                     @endforeach
-                                    </tbody> --}}
+                                    </tbody>
                                 </table>
                                 <!-- End Table with stripped rows -->
                             {{-- </blockquote> --}}
