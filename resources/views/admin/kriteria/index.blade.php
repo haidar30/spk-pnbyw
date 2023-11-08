@@ -30,7 +30,7 @@
                             @endif
                             <a href="{{ route('kriteria.create') }}"><button class="btn btn-primary" type="button">
                                 Tambah</button></a>
-                                
+                                <br>
                     <!-- Table with stripped rows -->
                     <table class="table table-striped">
                         <thead>
@@ -42,7 +42,7 @@
                             <th scope="col"><i class="bi bi-gear"></i> Action</th>
                         </tr>
                         </thead>
-                        
+
                         <tbody>
                         @foreach ($kriteria as $item)
                             <tr>

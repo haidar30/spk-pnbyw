@@ -39,10 +39,10 @@
                         @endif
                         <!-- Vertical Form -->
 
-                        
-                                
 
-                        <form class="row g-3" action="{{ isset($kriteria) ? 
+
+
+                        <form class="row g-3" action="{{ isset($kriteria) ?
                         route('kriteria.update', $kriteria->id) : route('kriteria.store') }}"
                         id="kriteria_form" method="POST">
                             {!! csrf_field() !!}

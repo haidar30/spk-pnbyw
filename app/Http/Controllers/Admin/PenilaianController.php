@@ -43,6 +43,6 @@ class PenilaianController extends Controller
         Penilaian::insert($insert);
 
         return redirect()->route('penilaian.index')
-        ->with('success', 'Data Kriteria Baru Berhasil Disimpan');
+        ->with('success', 'Data Penilaian Baru Berhasil Disimpan');
     }
 }

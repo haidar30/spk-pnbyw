@@ -36,7 +36,7 @@ class KriteriaController extends Controller
     public function edit($id) {
         $kriteria = DB::table('kriteria')->where('id', $id)->first();
 
-        return view('admin.kriteria.create', compact('kriteria'));      
+        return view('admin.kriteria.create', compact('kriteria'));
     }
 
     public function update(Request $request) {
@@ -47,8 +47,8 @@ class KriteriaController extends Controller
         ]);
 
         return redirect()->route('kriteria.index')
-        ->with('succes', 'Data Kriteria Berhasil Diperbarui.');
-        
+        ->with('success', 'Data Kriteria Berhasil Diperbarui.');
+
     }
 
     public function destroy($id) {
