@@ -39,7 +39,13 @@
                         @endif
                         <!-- Vertical Form -->
 
-                        <form class="row g-3" action="{{ isset($penilaian) ? 
+                        @if ($message = Session::get('success'))
+                        <div class="alert alert-success">
+                            <p>{{ $message }}</p>
+                        </div>
+                        @endif
+
+                        <form class="row g-3" action="{{ isset($penilaian) ?
                         route('penilaian.update', $penilaian->id) : route('penilaian.store') }}"
                         id="penilaian_form" method="POST">
                             {!! csrf_field() !!}
@@ -79,7 +85,7 @@
 
                             <div class="card-body">
                                     <h5>Masukan Nilai Evaluasi Sesuai Kriteria</h5>
-{{--                                     
+{{--
                                     <div class="row mb-3">
                                         <label for="validationDefault04" class="col-md-2 col-form-label ">INTEGRITAS
                                             <span class="required">*</span></label>
@@ -115,7 +121,8 @@
                                         <div class="col-md-10">
                                             {{-- <select class="form-select" name="bobot" id="bobot" required>
                                                 <option selected disabled value="">Nilai</option> --}}
-                                                <input class="form" type="text" name="" id="" >
+                                                <input class="form" type="text" name="nilai_{{ $item->id }}" id="nilai_{{ $item->id }}" >
+                                                <input type="hidden" name="id_kriteria_{{ $item->id }}" id="id_kriteria_{{ $item->id }}" value="{{ $item->id }}">
                                             {{-- </select> --}}
                                         </div>
                                         </div>
