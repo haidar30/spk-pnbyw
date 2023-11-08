@@ -16,9 +16,10 @@ return new class extends Migration
             $table->string('id_pegawai');
             $table->string('bulan');
             $table->year('tahun');
-            $table->string('id_kriteria');
+            $table->integer('id_kriteria');
             $table->integer('nilai');
             $table->timestamps();
+            $table->index('id_kriteria');
         });
     }
 
