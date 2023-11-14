@@ -27,7 +27,7 @@
                     <div class="card-body">
                         <div>
                             <h5 class="card-title"> HASIL PERHITUNGAN KINERJA PEGAWAI MENGGUNAKAN METODE SAW</h5>
-                            
+
                             <div class="row">
                                 <div class="col card-header">
                                     <button type="button" class="btn btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
@@ -73,7 +73,7 @@
                         </div>
                         <!-- Vertical Form -->
 
-                        
+
                         <div class="card">
                             <div class="card-header">
                                 <H5>BOBOT KRITERIA</H5>
@@ -90,7 +90,7 @@
                                         <th scope="col"><i class="bi bi-bag"></i> Jenis</th>
                                     </tr>
                                     </thead>
-                                    
+
                                     <tbody>
                                     @foreach ($kriteria as $item)
                                         <tr>
@@ -119,25 +119,25 @@
                                         <tr>
                                             <th scope="col">No</th>
                                             <th scope="col">Nama Pegawai</th>
-                                            <th scope="col">Integritas</th>
-                                            <th scope="col">Pelayanan</th>
-                                            <th scope="col">Kerapian</th>
-                                            <th scope="col">Kerjasama</th>
-                                            <th scope="col">Malapetaka</th>
-                                            <th scope="col">Kehadiran</th>
+                                            <th scope="col">Jabatan</th>
+                                            <th scope="col">Tahun Masuk</th>
+                                            <th scope="col">Kriteria</th>
+                                            <th scope="col">nilai</th>
                                         </tr>
                                         </thead>
-                                        
-                                        {{-- <tbody>
-                                        @foreach ($kriteria as $item)
+
+                                        <tbody>
+                                        @foreach ($eval_pegawai as $item)
                                             <tr>
                                                 <td>{{ $item->id }}</td>
+                                                <td>{{ $item->nama }}</td>
+                                                <td>{{ $item->jabatan }}</td>
+                                                <td>{{ $item->tahun_masuk }}</td>
                                                 <td>{{ $item->kriteria }}</td>
-                                                <td>{{ $item->bobot }}</td>
-                                                <td>{{ $item->jenis }}</td>
+                                                <td>{{ $item->nilai }}</td>
                                             </tr>
                                         @endforeach
-                                        </tbody> --}}
+                                        </tbody>
                                     </table>
                                     <!-- End Table with stripped rows -->
                                 {{-- </blockquote> --}}
@@ -164,7 +164,7 @@
                                             <th scope="col">Kehadiran</th>
                                         </tr>
                                         </thead>
-                                        
+
                                         {{-- <tbody>
                                         @foreach ($kriteria as $item)
                                             <tr>
@@ -197,7 +197,7 @@
                                             <th scope="col">Peringkat</th>
                                         </tr>
                                         </thead>
-                                        
+
                                         {{-- <tbody>
                                         @foreach ($kriteria as $item)
                                             <tr>
