@@ -27,7 +27,7 @@ class DataPegawaiController extends Controller
             'alamat' => $request->alamat
         ]);
 
-        return redirect()->route('data_pegawai.index')
+        return redirect()->route('pegawai.index')
                         ->with('success', 'Data Pegawai baru telah berhasil disimpan.');
     }
 
@@ -45,13 +45,13 @@ class DataPegawaiController extends Controller
             'alamat' => $request->alamat
         ]);
 
-        return redirect()->route('data_pegawai.index')
+        return redirect()->route('pegawai.index')
         ->with('success', 'Data Pegawai Berhasil Diperbarui.');
     }
 
     public function destroy($id) {
         DB::table('data_pegawai')->where('id',$id)->delete();
-        return redirect()->route('data_pegawai.index')
+        return redirect()->route('pegawai.index')
                         ->with('success', 'Data Pegawai Berhasil Dihapus.');
     }
 

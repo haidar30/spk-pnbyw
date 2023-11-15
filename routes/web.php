@@ -1,10 +1,16 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\DataPegawaiController;
+use App\Http\Controllers\Admin\HasilController;
 use App\Http\Controllers\Admin\KriteriaController;
 use App\Http\Controllers\Admin\PenilaianController;
 use App\Http\Controllers\Admin\KlasifikasiController;
+use App\Http\Controllers\Admin\LaporanController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Superadmin\SuperadminController;
+use App\Http\Controllers\Users\UsersController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -26,34 +32,53 @@ Route::get('/', function () {
 
 Auth::routes();
 
-// // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('admin.index');
-// Route::get('/data_pegawai', [App\Http\Controllers\Admin\DataPegawaiController::class, 'index'])->name('admin.data_pegawai');
-// Route::get('/data_pegawai/create', [App\Http\Controllers\Admin\DataPegawaiController::class, 'create'])->name('admin.data_pegawai.create');
-// Route::get('/kriteria', [App\Http\Controllers\Admin\KriteriaController::class, 'index'])->name('admin.kriteria');
-// Route::get('/kriteria/create', [App\Http\Controllers\Admin\KriteriaController::class, 'create'])->name('admin.kriteria.create');
-// Route::get('/create', [App\Http\Controllers\DataPegawaiController::class, 'create'])->name('admin.data_pegawai.create');
+//Normal Users Routes List
+Route::middleware(['auth', 'user-access:user'])->group(function () {
 
-// Route::group(['namespace' => 'Admin'], function(){
-    Route::resource('dashboard', DashboardController::class);
-    Route::resource('data_pegawai', DataPegawaiController::class);
-    Route::resource('kriteria', KriteriaController::class);
-    Route::resource('penilaian', PenilaianController::class);
-    Route::resource('klasifikasi', KlasifikasiController::class);
-// });
+    Route::get('/user/dashboard', [UsersController::class, 'index'])->name('users.index');
+    Route::get('/user/klasifikasi', [UsersController::class, 'klasifikasi'])->name('klasifikasi.index');
+    Route::get('/user/hasil', [UsersController::class, 'hasil'])->name('hasil.index');
+});
 
+//Admin Routes List
+Route::middleware(['auth', 'user-access:admin'])->group(function () {
 
-Route::get('home', function () {
-    return view('admin.index');
-})->middleware(['auth', 'verified'])->name('dashboard');
+    Route::get('admin/dashboard', [AdminController::class, 'index'])->name('admin.index');
+    Route::resource('admin/pegawai', DataPegawaiController::class);
+    Route::resource('admin/kriteria', KriteriaController::class);
+    Route::resource('admin/penilaian', PenilaianController::class);
+    Route::resource('admin/klasifikasi', KlasifikasiController::class);
+    Route::resource('admin/hasil', HasilController::class);
+    Route::resource('admin/laporan', LaporanController::class);
+});
+    
+//Admin Routes List
+Route::middleware(['auth', 'user-access:superadmin'])->group(function () {
+    
+    Route::get('/superadmin/dashboard', [SuperadminController::class, 'index'])->name('superadmin.index');
+    Route::get('/superadmin/pegawai', [SuperadminController::class, 'pegawai'])->name('pegawai.index');
+    Route::get('/superadmin/kriteria', [SuperadminController::class, 'kriteria'])->name('kriteria.index');
+    Route::get('/superadmin/klasifikasi', [SuperadminController::class, 'klasifikasi'])->name('klasifikasi.index');
+    Route::get('/superadmin/hasil', [SuperadminController::class, 'hasil'])->name('hasil.index');
+    Route::get('/superadmin/laporan', [SuperadminController::class, 'laporan'])->name('laporan.index');
+});
 
-Route::get('/cobalogin', function () {
-    return view('admin.cobalogin');
-})->middleware(['auth', 'verified'])->name('cobalogin');
+Route::get('/comingsoon', function () {
+    return view('frontend.comingsoon');
+});
 
-Route::get('/hasil_penilaian', function () {
-    return view('admin.penilaian.hasil');
-})->middleware(['auth', 'verified'])->name('cobalogin');
+// Route::get('home', function () {
+//     return view('admin.index');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/laporan', function () {
-    return view('admin.laporan.index');
-})->middleware(['auth', 'verified'])->name('laporan');
+// Route::get('/cobalogin', function () {
+//     return view('admin.cobalogin');
+// })->middleware(['auth', 'verified'])->name('cobalogin');
+
+// Route::get('/hasil_penilaian', function () {
+//     return view('admin.penilaian.hasil');
+// })->middleware(['auth', 'verified'])->name('cobalogin');
+
+// Route::get('/laporan', function () {
+//     return view('admin.laporan.index');
+// })->middleware(['auth', 'verified'])->name('laporan');

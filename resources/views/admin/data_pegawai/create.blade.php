@@ -38,8 +38,8 @@
                             </div>
                         @endif
                         <!-- Vertical Form -->
-                        <form class="row g-3" action="{{ isset($data_pegawai) ? route('data_pegawai.update',
-                        $data_pegawai->id) : route('data_pegawai.store') }}"
+                        <form class="row g-3" action="{{ isset($data_pegawai) ? route('pegawai.update',
+                        $data_pegawai->id) : route('pegawai.store') }}"
                         id="data_pegawai_form" method="POST">
                             {!! csrf_field() !!}
                             {!! isset($data_pegawai) ? method_field('PUT') : '' !!}
@@ -81,7 +81,7 @@
                             </div>
                             <div class="text-center">
                                 <button class="btn btn-primary" type="submit">Save</button>
-                                <a href="{{ route('data_pegawai.index') }}">
+                                <a href="{{ route('pegawai.index') }}">
                                     <button class="btn btn-secondary" type="button">Cancel</button>
                                 </a>
                             </div>

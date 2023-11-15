@@ -1,4 +1,4 @@
-@extends("admin.layouts.sidebar")
+@extends("superadmin.layouts.sidebar")
 
 @section('content')
 <section id="main-content">
@@ -21,15 +21,8 @@
         <div class="row">
             <section class="card-body">
                 <div class="card">
-                    <div class="card-body"> <br>
-                            @if ($message = Session::get('success'))
-                                <div class="alert alert-success">
-                                    <p>{{ $message }}</p>
-                                </div>
-                            @endif
-                            <a href="{{ route('kriteria.create') }}"><button class="btn btn-primary" style="width: 200px" type="button">
-                                Tambah</button></a> <br> 
-                                <br>
+                    <div class="card-body">
+                        
                     <!-- Table with stripped rows -->
                     <table class="table table-striped">
                         <thead>
@@ -38,7 +31,6 @@
                             <th scope="col"><i class="bi bi-bag-dash"></i> Jenis Kriteria</th>
                             <th scope="col"><i class="bi bi-receipt"></i> Bobot</th>
                             <th scope="col"><i class="bi bi-bag"></i> Jenis</th>
-                            <th scope="col"><i class="bi bi-gear"></i> Action</th>
                         </tr>
                         </thead>
 
@@ -49,22 +41,6 @@
                                 <td>{{ $item->kriteria }}</td>
                                 <td>{{ $item->bobot }}</td>
                                 <td>{{ $item->jenis }}</td>
-                                <td>
-                                    <div class="btn-group">
-                                        <form action="{{ route('kriteria.destroy',$item->id) }}" method="POST">
-                                        <a href="{{ route('kriteria.edit',$item->id) }}"
-                                            class="btn btn-warning">
-                                            <i class="bi bi-pencil-fill"></i>
-                                        </a>
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger"
-                                        onclick="return confirm('Apakah Anda yakin ingin menghapus data ini ?')">
-                                            <i class="bi bi-trash-fill"></i>
-                                        </button>
-                                        </form>
-                                    </div>
-                                </td>
                             </tr>
                         @endforeach
                         </tbody>

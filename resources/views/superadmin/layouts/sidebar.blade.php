@@ -44,7 +44,7 @@
   <header id="header" class="header fixed-top d-flex align-items-center bg-dark">
 
     <div class="d-flex align-items-center justify-content-between">
-      <a href="{{ url('admin/dashboard')}}" class="logo d-flex align-items-center">
+      <a href="{{ url('superadmin/dashboard')}}" class="logo d-flex align-items-center">
         <img src="{{ asset('frontend/images/logo-pn.png') }}" alt="">
         <span class="d-none d-lg-block text-white"> E-EKP</span>
       </a>
@@ -133,21 +133,21 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="{{ url('admin/dashboard') }}">
+        <a class="nav-link collapsed" href="{{ url('superadmin/dashboard') }}">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="{{ url('admin/pegawai') }}">
+        <a class="nav-link collapsed" href="{{ route('pegawai.index') }}">
           <i class="bi bi-person"></i>
           <span>Data Pegawai</span>
         </a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="{{ url('admin/kriteria') }}">
+        <a class="nav-link collapsed" href="{{ route('kriteria.index') }}">
           <i class="bi bi-file-earmark-bar-graph"></i>
           <span>Data Kriteria</span>
         </a>
@@ -155,21 +155,15 @@
 
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-menu-button-wide"></i><span>Proses Penilaian</span><i class="bi bi-chevron-down ms-auto"></i>
+          <i class="bi bi-menu-button-wide"></i><span> Penilaian Pegawai</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-          <li>
-            <a href="{{ url('admin/penilaian') }}">
-              <i class="bi bi-circle"></i><span>Penilaian Pegawai</span>
-            </a>
-          </li>
-          <li>
-            <a href="{{ url('admin/klasifikasi') }}">
+            <a href="{{ route('klasifikasi.index')}}">
               <i class="bi bi-circle"></i><span>Hasil Klasifikasi</span>
             </a>
           </li>
           <li>
-            <a href="{{ url('admin/hasil') }}">
+            <a href="{{ route('hasil.index')}}">
               <i class="bi bi-circle"></i><span>Hasil Penilaian</span>
             </a>
           </li>
@@ -177,7 +171,7 @@
       </li><!-- End Components Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="{{ url('admin/laporan') }}">
+        <a class="nav-link collapsed" href="{{ route('laporan.index')}}">
           <i class="bi bi-envelope"></i>
           <span>Laporan</span>
         </a>
