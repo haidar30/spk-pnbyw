@@ -133,21 +133,21 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="{{ url('user/dashboard') }}">
+        <a class="nav-link  @if(Request::segment(2) != 'dashboard') collapsed @endif "  href="{{ url('user/dashboard') }}">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="{{ url('user/klasifikasi') }}">
+        <a class="nav-link  @if(Request::segment(2) != 'klasifikasi') collapsed @endif "  href="{{ url('user/klasifikasi') }}">
           <i class="bi bi-person"></i>
           <span>Hasil Klasifikasi</span>
         </a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="{{ url('user/hasil') }}">
+        <a class="nav-link  @if(Request::segment(2) != 'hasil') collapsed @endif "  href="{{ url('user/hasil') }}">
           <i class="bi bi-file-earmark-bar-graph"></i>
           <span>Hasil Penilaian</span>
         </a>

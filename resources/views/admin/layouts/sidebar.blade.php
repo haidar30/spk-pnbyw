@@ -133,21 +133,21 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="{{ url('admin/dashboard') }}">
+        <a class="nav-link @if(Request::segment(2) != 'dashboard') collapsed @endif " href="{{ url('admin/dashboard') }}">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="{{ url('admin/pegawai') }}">
+        <a class="nav-link @if(Request::segment(2) != 'pegawai') collapsed @endif " href="{{ url('admin/pegawai') }}">
           <i class="bi bi-person"></i>
           <span>Data Pegawai</span>
         </a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="{{ url('admin/kriteria') }}">
+        <a class="nav-link @if(Request::segment(2) != 'kriteria') collapsed @endif " href="{{ url('admin/kriteria') }}">
           <i class="bi bi-file-earmark-bar-graph"></i>
           <span>Data Kriteria</span>
         </a>
@@ -159,17 +159,17 @@
         </a>
         <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="{{ url('admin/penilaian') }}">
+            <a  class="nav-link @if(Request::segment(2) != 'penilaian') collapsed @endif " href="{{ url('admin/penilaian') }}">
               <i class="bi bi-circle"></i><span>Penilaian Pegawai</span>
             </a>
           </li>
           <li>
-            <a href="{{ url('admin/klasifikasi') }}">
+            <a  class="nav-link @if(Request::segment(2) != 'klasifikasi') collapsed @endif " href="{{ url('admin/klasifikasi') }}">
               <i class="bi bi-circle"></i><span>Hasil Klasifikasi</span>
             </a>
           </li>
           <li>
-            <a href="{{ url('admin/hasil') }}">
+            <a  class="nav-link @if(Request::segment(2) != 'hasil') collapsed @endif " href="{{ url('admin/hasil') }}">
               <i class="bi bi-circle"></i><span>Hasil Penilaian</span>
             </a>
           </li>
@@ -177,7 +177,7 @@
       </li><!-- End Components Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="{{ url('admin/laporan') }}">
+        <a class="nav-link @if(Request::segment(2) != 'laporan') collapsed @endif " href="{{ url('admin/laporan') }}">
           <i class="bi bi-envelope"></i>
           <span>Laporan</span>
         </a>

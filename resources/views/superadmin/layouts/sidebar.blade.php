@@ -133,21 +133,21 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="{{ url('superadmin/dashboard') }}">
+        <a class="nav-link @if(Request::segment(2) != 'dashboard') collapsed @endif " href="{{ url('superadmin/dashboard') }}">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="{{ route('pegawai.index') }}">
+        <a class="nav-link @if(Request::segment(2) != 'pegawai') collapsed @endif " href="{{ route('pegawai.index') }}">
           <i class="bi bi-person"></i>
           <span>Data Pegawai</span>
         </a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="{{ route('kriteria.index') }}">
+        <a class="nav-link @if(Request::segment(2) != 'kriteria') collapsed @endif " href="{{ route('kriteria.index') }}">
           <i class="bi bi-file-earmark-bar-graph"></i>
           <span>Data Kriteria</span>
         </a>
@@ -158,12 +158,12 @@
           <i class="bi bi-menu-button-wide"></i><span> Penilaian Pegawai</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-            <a href="{{ route('klasifikasi.index')}}">
+            <a class="nav-link @if(Request::segment(2) != 'klasifikasi') collapsed @endif "  href="{{ route('klasifikasi.index')}}">
               <i class="bi bi-circle"></i><span>Hasil Klasifikasi</span>
             </a>
           </li>
           <li>
-            <a href="{{ route('hasil.index')}}">
+            <a class="nav-link @if(Request::segment(2) != 'hasil') collapsed @endif "  href="{{ route('hasil.index')}}">
               <i class="bi bi-circle"></i><span>Hasil Penilaian</span>
             </a>
           </li>
@@ -171,7 +171,7 @@
       </li><!-- End Components Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="{{ route('laporan.index')}}">
+        <a class="nav-link @if(Request::segment(2) != 'laporan') collapsed @endif " href="{{ route('laporan.index')}}">
           <i class="bi bi-envelope"></i>
           <span>Laporan</span>
         </a>
