@@ -36,7 +36,7 @@ class KriteriaController extends Controller
     public function edit($id) {
         $kriteria = DB::table('kriteria')->where('id', $id)->first();
 
-        return view('admin.kriteria.create', compact('kriteria'));
+        return view('admin.kriteria.edit', compact('kriteria'));
     }
 
     public function update(Request $request) {

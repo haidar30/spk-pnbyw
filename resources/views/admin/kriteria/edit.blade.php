@@ -4,13 +4,13 @@
 
 <!--  Page Title -->
 <div class="pagetitle">
-    <h1>Menambahkan Data Kriteria</h1>
+    <h1>Merubah Data Kriteria</h1>
     <nav>
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a>Home</a></li>
         <li class="breadcrumb-item"><a>Dashboard</a></li>
         <li class="breadcrumb-item"><a>Data Kriteria</a></li>
-        <li class="breadcrumb-item active">Tambah Data Kriteria</li>
+        <li class="breadcrumb-item active">Merubah Data Kriteria</li>
     </ol>
     </nav>
 </div>
@@ -58,7 +58,6 @@
                                 <label for="validationDefault04" class="form-label">Nilai Bobot
                                     <span class="required">*</span></label>
                                 <select class="form-select" name="bobot" id="bobot" required>
-                                    <option selected disabled value="">Pilih Nilai Bobot</option>
                                     <option value="10" {{ (isset($kriteria) && $kriteria->bobot == "1")
                                         ? 'selected' : '' }}>10</option>
                                     <option value="20" {{ (isset($kriteria) && $kriteria->bobot == "2")
@@ -75,7 +74,6 @@
                                 <label for="validationDefault04" class="form-label">Jenis Kriteria
                                     <span class="required">*</span></label>
                                 <select class="form-select" name="jenis" id="jenis" required>
-                                    <option selected disabled value="">Pilih Jenis Kriteria</option>
                                     <option value="BENEFIT" {{ (isset($kriteria) && $kriteria->bobot == "BENEFIT")
                                         ? 'selected' : '' }}>BENEFIT (Plus)</option>
                                     <option value="CONST" {{ (isset($kriteria) && $kriteria->bobot == "CONST")

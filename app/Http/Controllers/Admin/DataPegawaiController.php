@@ -33,7 +33,7 @@ class DataPegawaiController extends Controller
 
     public function edit($id) {
         $data_pegawai = DB::table('data_pegawai')->where('id', $id)->first();
-        return view('admin.data_pegawai.create', compact('data_pegawai'));
+        return view('admin.data_pegawai.edit', compact('data_pegawai'));
     }
 
     public function update(Request $request) {

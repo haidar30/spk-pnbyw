@@ -44,9 +44,9 @@
                         </thead>
                         
                         <tbody>
-                        @foreach ($data_pegawai as $item)
+                        @foreach ($data_pegawai as $no => $item)
                             <tr>
-                                <td>{{ $item->id }}</td>
+                                <th scope="row">{{ ++$no }}</th>
                                 <td>{{ $item->nama }}</td>
                                 <td>{{ $item->jabatan }}</td>
                                 <td>{{ $item->status }}</td>

@@ -5,12 +5,12 @@
 
 <!--  Page Title -->
 <div class="pagetitle">
-    <h1>Data Kriteria</h1>
+    <h1>Data Sub-Kriteria</h1>
     <nav>
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a>Home</a></li>
         <li class="breadcrumb-item"><a>Dashboard</a></li>
-        <li class="breadcrumb-item active">Data Kriteria</li>
+        <li class="breadcrumb-item active">Data Sub-Kriteria</li>
     </ol>
     </nav>
 </div>
@@ -27,7 +27,7 @@
                                     <p>{{ $message }}</p>
                                 </div>
                             @endif
-                            <a href="{{ route('kriteria.create') }}"><button class="btn btn-primary" style="width: 200px" type="button">
+                            <a href="{{ route('subkriteria.create') }}"><button class="btn btn-primary" style="width: 200px" type="button">
                                 Tambah</button></a> <br> 
                                 <br>
                     <!-- Table with stripped rows -->
@@ -35,24 +35,24 @@
                         <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col"><i class="bi bi-bag-dash"></i> Jenis Kriteria</th>
+                            <th scope="col"><i class="bi bi-bag-dash"></i> Kriteria</th>
+                            <th scope="col"><i class="bi bi-bag"></i> Sub-Kriteria</th>
                             <th scope="col"><i class="bi bi-receipt"></i> Bobot</th>
-                            <th scope="col"><i class="bi bi-bag"></i> Jenis</th>
                             <th scope="col"><i class="bi bi-gear"></i> Action</th>
                         </tr>
                         </thead>
 
                         <tbody>
-                        @foreach ($kriteria as $no => $item)
+                        @foreach ($subkriteria as $no => $item)
                             <tr>
                                 <th scope="row">{{ ++$no }}</th>
-                                <td>{{ $item->kriteria }}</td>
+                                <td>{{ $item->kriteria->kriteria }}</td>
+                                <td>{{ $item->subkriteria }}</td>
                                 <td>{{ $item->bobot }}</td>
-                                <td>{{ $item->jenis }}</td>
                                 <td>
                                     <div class="btn-group">
-                                        <form action="{{ route('kriteria.destroy',$item->id) }}" method="POST">
-                                        <a href="{{ route('kriteria.edit',$item->id) }}"
+                                        <form action="{{ route('subkriteria.destroy',$item->id) }}" method="POST">
+                                        <a href="{{ route('subkriteria.edit',$item->id) }}"
                                             class="btn btn-warning">
                                             <i class="bi bi-pencil-fill"></i>
                                         </a>

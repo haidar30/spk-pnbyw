@@ -4,13 +4,13 @@
 
 <!--  Page Title -->
 <div class="pagetitle">
-    <h1>Tambah Data Pegawai</h1>
+    <h1>Mengubah Data Pegawai</h1>
     <nav>
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a>Home</a></li>
         <li class="breadcrumb-item"><a>Dashboard</a></li>
         <li class="breadcrumb-item"><a>Data Pegawai</a></li>
-        <li class="breadcrumb-item active">Tambah Data Pegawai</li>
+        <li class="breadcrumb-item active">Mengubah Data Pegawai</li>
       </ol>
     </nav>
   </div>
@@ -24,9 +24,7 @@
                 {{-- Create Form Pengalaman Kerja --}}
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">
-                            {{ isset($admin_lecturer) ? 'Mengubah' : 'Menambahkan' }} Data Pegawai
-                        </h5>
+                        <h5 class="card-title"></h5>
                         @if ($errors->any())
                             <div class="alert alert-danger">
                                 <strong>Whoops</strong> Ada yang salah dengan yang kamu inputkan. <br><br>

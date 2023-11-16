@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\DataPegawai;
 use App\Models\Kriteria;
 use App\Models\Penilaian;
+use App\Models\SubKriteria;
 use Illuminate\Http\Request;
 
 class PenilaianController extends Controller
@@ -14,9 +15,10 @@ class PenilaianController extends Controller
     {
         $datapegawai = DataPegawai::all();
         $datakriteria = Kriteria::all();
+        $datasubkriteria = SubKriteria::all();
 
         // dd($data_pegawai, $data_kriteria);
-        return view('admin.penilaian.create', compact('datapegawai', 'datakriteria'));
+        return view('admin.penilaian.create', compact('datapegawai', 'datakriteria', 'datasubkriteria'));
     }
 
     public function store(Request $request)

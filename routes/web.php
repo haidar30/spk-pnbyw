@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\KriteriaController;
 use App\Http\Controllers\Admin\PenilaianController;
 use App\Http\Controllers\Admin\KlasifikasiController;
 use App\Http\Controllers\Admin\LaporanController;
+use App\Http\Controllers\Admin\SubKriteriaController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Superadmin\SuperadminController;
 use App\Http\Controllers\Users\UsersController;
@@ -46,6 +47,7 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::get('admin/dashboard', [AdminController::class, 'index'])->name('admin.index');
     Route::resource('admin/pegawai', DataPegawaiController::class);
     Route::resource('admin/kriteria', KriteriaController::class);
+    Route::resource('admin/subkriteria', SubKriteriaController::class);
     Route::resource('admin/penilaian', PenilaianController::class);
     Route::resource('admin/klasifikasi', KlasifikasiController::class);
     Route::resource('admin/hasil', HasilController::class);

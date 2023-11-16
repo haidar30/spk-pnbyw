@@ -114,17 +114,25 @@
                                     </div>
                                     </div> --}}
 
+                                    {{-- @foreach ($datakriteria as $item)
+                                        <div class="row mb-3">
+                                            <label for="validationDefault04" class="col-md-2 col-form-label ">{{$item->kriteria}}
+                                                <span class="required">*</span></label>
+                                                    <div class="col-md-10">
+                                                            <input class="form" type="text" name="nilai_{{ $item->id }}" id="nilai_{{ $item->id }}" >
+                                                            <input type="hidden" name="id_kriteria_{{ $item->id }}" id="id_kriteria_{{ $item->id }}" value="{{ $item->id }}">
+                                                    </div>
+                                        </div>
+                                    @endforeach --}}
+
                                     @foreach ($datakriteria as $item)
                                         <div class="row mb-3">
                                             <label for="validationDefault04" class="col-md-2 col-form-label ">{{$item->kriteria}}
                                                 <span class="required">*</span></label>
-                                        <div class="col-md-10">
-                                            {{-- <select class="form-select" name="bobot" id="bobot" required>
-                                                <option selected disabled value="">Nilai</option> --}}
-                                                <input class="form" type="text" name="nilai_{{ $item->id }}" id="nilai_{{ $item->id }}" >
-                                                <input type="hidden" name="id_kriteria_{{ $item->id }}" id="id_kriteria_{{ $item->id }}" value="{{ $item->id }}">
-                                            {{-- </select> --}}
-                                        </div>
+                                                    <div class="col-md-10">
+                                                            <input class="form" type="text" name="nilai_{{ $item->id }}" id="nilai_{{ $item->id }}" >
+                                                            <input type="hidden" name="id_kriteria_{{ $item->id }}" id="id_kriteria_{{ $item->id }}" value="{{ $item->id }}">
+                                                    </div>
                                         </div>
                                     @endforeach
 
