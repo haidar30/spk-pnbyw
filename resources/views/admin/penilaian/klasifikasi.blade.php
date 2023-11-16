@@ -88,37 +88,35 @@
                                 <H5>NILAI EVALUASI PEGAWAI</H5>
                             </div>
                             <div class="card-title">
-                                {{-- <blockquote class="blockquote mb-0"> --}}
-                                    <!-- Table with stripped rows -->
-                                    <table class="table table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">No</th>
-                                                <th scope="col">Nama Pegawai</th>
-                                                <th scope="col">Kriteria</th>
-                                                <th scope="col">Nilai</th>
-                                            </tr>
-                                        </thead>
-                                    
-                                        <tbody>
-                                            @foreach ($eval_pegawai->groupBy('nama') as $nama => $items)
-                                                <tr>
-                                                    <td>{{ $items->first()->id }}</td>
-                                                    <td>{{ $nama }}</td>
-                                                    <td>
-                                                        {{ implode(', ', $items->pluck('kriteria')->toArray()) }}
-                                                    </td>
-                                                    <td>
-                                                        {{ implode(', ', $items->pluck('nilai')->toArray()) }}
-                                                    </td>
-                                                </tr>
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">No</th>
+                                            <th scope="col">Nama Pegawai</th>
+                                            @foreach ($kriteria as $item)
+                                                <th scope="col">{{ $item->kriteria }}</th>
                                             @endforeach
-                                        </tbody>
-                                    </table>
-                                    
-                                    
-                                    <!-- End Table with stripped rows -->
-                                {{-- </blockquote> --}}
+                                        </tr>
+                                    </thead>
+                                
+                                    <tbody>
+                                        @forelse ($eval_pegawai->groupBy('pegawai.nama') as $eval)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $eval->first()->pegawai->nama }}</td>
+                                            @foreach ($kriteria as $item)
+                                            <td>
+                                                {{ $eval->where('id_kriteria', $item->id)->first()->nilai }}
+                                            </td>
+                                            @endforeach
+                                            </tr>
+                                        @empty
+                                            <tr>
+                                                <td colspan="{{ count($kriteria) + 2 }}">Tidak ada data</td>
+                                            </tr>
+                                        @endforelse
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
 
@@ -127,32 +125,35 @@
                                 <H5>NORMALISASI NILAI EVALUASI PEGAWAI</H5>
                             </div>
                             <div class="card-title">
-                                {{-- <blockquote class="blockquote mb-0"> --}}
-                                    <!-- Table with stripped rows -->
-                                    <table class="table table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">No</th>
-                                                <th scope="col">Nama Pegawai</th>
-                                                @foreach ($kriteria as $item)
-                                                    <th scope="col">{{ $item->kriteria }}</th>
-                                                @endforeach
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">No</th>
+                                            <th scope="col">Nama Pegawai</th>
+                                            @foreach ($kriteria as $item)
+                                                <th scope="col">{{ $item->kriteria }}</th>
+                                            @endforeach
+                                        </tr>
+                                    </thead>
+                                
+                                    <tbody>
+                                        @forelse ($eval_pegawai->groupBy('pegawai.nama') as $eval)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $eval->first()->pegawai->nama }}</td>
+                                            @foreach ($kriteria as $item)
+                                            <td>
+                                                {{ $eval->where('id_kriteria', $item->id)->first()->nilai }}
+                                            </td>
+                                            @endforeach
                                             </tr>
-                                        </thead>
-
-                                        {{-- <tbody>
-                                        @foreach ($kriteria as $item)
+                                        @empty
                                             <tr>
-                                                <td>{{ $item->id }}</td>
-                                                <td>{{ $item->kriteria }}</td>
-                                                <td>{{ $item->bobot }}</td>
-                                                <td>{{ $item->jenis }}</td>
+                                                <td colspan="{{ count($kriteria) + 2 }}">Tidak ada data</td>
                                             </tr>
-                                        @endforeach
-                                        </tbody> --}}
-                                    </table>
-                                    <!-- End Table with stripped rows -->
-                                {{-- </blockquote> --}}
+                                        @endforelse
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
 

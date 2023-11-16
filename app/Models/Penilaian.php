@@ -15,11 +15,12 @@ class Penilaian extends Model
 
     public function pegawai()
     {
-        return $this->hasMany(DataPegawai::class, 'id_pegawai', 'id');
+        return $this->belongsTo(DataPegawai::class, 'id_pegawai', 'id');
     }
 
     public function kriteria()
     {
-        return $this->hasMany(Kriteria::class, 'id_kriteria', 'id');
+        return $this->belongsTo(Kriteria::class, 'id_kriteria', 'id');
     }
+    
 }
