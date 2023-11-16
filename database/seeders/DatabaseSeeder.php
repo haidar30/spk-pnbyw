@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
         $this->call(PegawaiSeeder::class);
         $this->call(KriteriaSeeder::class);
         $this->call(SubKriteriaSeeder::class);
+        $this->call(PenilaianSeeder::class);
         // \App\Models\User::factory(10)->create();
 
         // \App\Models\User::factory()->create([

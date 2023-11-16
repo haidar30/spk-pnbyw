@@ -47,10 +47,31 @@ class PegawaiSeeder extends Seeder
                 'alamat' => 'Banyuwangi'
             ],
             [
+                'nama' => 'Didin Bramiana Bakhtiar',
+                'jabatan' => 'Honorer Dipa',
+                'status' => 'Pramubakti',
+                'tahun_masuk' => '2010',
+                'alamat' => 'Banyuwangi'
+            ],
+            [
+                'nama' => 'Afiif Hadiani Pratiwi',
+                'jabatan' => 'Honorer Dipa',
+                'status' => 'Pramubakti',
+                'tahun_masuk' => '2022',
+                'alamat' => 'Banyuwangi'
+            ],
+            [
                 'nama' => 'Rudianto',
                 'jabatan' => 'Honorer Dipa',
                 'status' => 'Driver',
                 'tahun_masuk' => '2010',
+                'alamat' => 'Banyuwangi'
+            ],
+            [
+                'nama' => 'Ummah Hayrofiq',
+                'jabatan' => 'Honorer Dipa',
+                'status' => 'Driver',
+                'tahun_masuk' => '2016',
                 'alamat' => 'Banyuwangi'
             ]
         ]);

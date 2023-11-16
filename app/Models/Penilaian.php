@@ -10,7 +10,7 @@ class Penilaian extends Model
     protected $table = 'penilaian';
     protected $primaryKey = 'id';
     protected $fillable = [
-        'id_pegawai', 'bulan', 'tahun', 'id_kriteria', 'nilai',
+        'id_pegawai', 'bulan', 'id_kriteria', 'nilai',
     ];
 
     public function pegawai()
