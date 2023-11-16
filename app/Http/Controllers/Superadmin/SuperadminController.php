@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Superadmin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Kriteria;
+use App\Models\Penilaian;
+use App\Models\SubKriteria;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -31,10 +33,19 @@ class SuperadminController extends Controller
         return view('superadmin.kriteria.index', compact('kriteria'));
     }
 
+    public function subkriteria()
+    {
+        $kriteria = Kriteria::all();
+        $subkriteria = SubKriteria::all();
+        return view('superadmin.sub_kriteria.index', compact('subkriteria', 'kriteria'));
+    }
+
     public function klasifikasi()
     {
         $kriteria = Kriteria::all();
-        return view('superadmin.penilaian.klasifikasi', compact('kriteria'));
+        $eval_pegawai = Penilaian::join('data_pegawai', 'penilaian.id_pegawai', '=', 'data_pegawai.id')->join('kriteria', 'kriteria.id', '=', 'penilaian.id_kriteria')->get();
+        // dd($eval_pegawai);
+        return view('superadmin.penilaian.klasifikasi', compact(['kriteria', 'eval_pegawai']));
     }
 
     public function hasil()

@@ -15,7 +15,6 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->string('id_pegawai');
             $table->string('bulan');
-            $table->year('tahun');
             $table->integer('id_kriteria');
             $table->integer('nilai');
             $table->timestamps();

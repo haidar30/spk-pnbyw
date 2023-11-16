@@ -63,7 +63,7 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="col-12">
+                            {{-- <div class="col-12">
                                 <label for="validationDefault04" class="form-label">Bulan
                                     <span class="required">*</span></label>
                                 <select class="form-select" name="bulan" id="bulan" required>
@@ -71,76 +71,41 @@
                                     <option>Januari</option>
                                     <option>Februari</option>
                                 </select>
-                            </div>
+                            </div> --}}
                             <div class="col-12">
-                                <label for="validationDefault04" class="form-label">Tahun
-                                    <span class="required">*</span></label>
-                                <select class="form-select" name="tahun" id="tahun" required>
-                                    <option selected disabled value="">Pilih Tahun</option>
-                                    <option>2022</option>
-                                    <option>2023</option>
-                                    <option>2024</option>
-                                </select>
+                                <label for="validationDefault04" class="form-label">Bulan & Tahun Penilaian <span class="required">*</span></label>
+                                <div class="">
+                                    <input type="month" class="form-control" name="bulan" max="{{date('Y-m')}}">
+                                </div>
                             </div>
 
                             <div class="card-body">
                                     <h5>Masukan Nilai Evaluasi Sesuai Kriteria</h5>
-{{--
-                                    <div class="row mb-3">
-                                        <label for="validationDefault04" class="col-md-2 col-form-label ">INTEGRITAS
-                                            <span class="required">*</span></label>
-                                    <div class="col-md-10">
-                                        <select class="form-select" name="bobot" id="bobot" required>
-                                            <option selected disabled value="">Nilai</option>
-                                            <option value="10 {{ (isset($kriteria) && $kriteria->bobot == 1)
-                                                ? 'selected' : '' }}">10</option>
-                                            <option value="20 {{ (isset($kriteria) && $kriteria->bobot == 2)
-                                                ? 'selected' : '' }}">20</option>
-                                        </select>
-                                    </div>
-                                    </div>
 
-                                    <div class="row mb-3">
-                                        <label for="validationDefault04" class="col-md-2 col-form-label ">KEHADIRAN
-                                            <span class="required">*</span></label>
-                                    <div class="col-md-10">
-                                        <select class="form-select" name="bobot" id="bobot" required>
-                                            <option selected disabled value="">Nilai</option>
-                                            <option value="10 {{ (isset($kriteria) && $kriteria->bobot == 1)
-                                                ? 'selected' : '' }}">10</option>
-                                            <option value="20 {{ (isset($kriteria) && $kriteria->bobot == 2)
-                                                ? 'selected' : '' }}">20</option>
-                                        </select>
-                                    </div>
-                                    </div> --}}
-
-                                    {{-- @foreach ($datakriteria as $item)
+                                    @foreach ($datakriteria as $kriteria)
                                         <div class="row mb-3">
-                                            <label for="validationDefault04" class="col-md-2 col-form-label ">{{$item->kriteria}}
+                                            <label for="validationDefault04" class="col-md-2 col-form-label ">{{$kriteria->kriteria}}
                                                 <span class="required">*</span></label>
-                                                    <div class="col-md-10">
-                                                            <input class="form" type="text" name="nilai_{{ $item->id }}" id="nilai_{{ $item->id }}" >
-                                                            <input type="hidden" name="id_kriteria_{{ $item->id }}" id="id_kriteria_{{ $item->id }}" value="{{ $item->id }}">
-                                                    </div>
-                                        </div>
-                                    @endforeach --}}
-
-                                    @foreach ($datakriteria as $item)
-                                        <div class="row mb-3">
-                                            <label for="validationDefault04" class="col-md-2 col-form-label ">{{$item->kriteria}}
-                                                <span class="required">*</span></label>
-                                                    <div class="col-md-10">
-                                                            <input class="form" type="text" name="nilai_{{ $item->id }}" id="nilai_{{ $item->id }}" >
-                                                            <input type="hidden" name="id_kriteria_{{ $item->id }}" id="id_kriteria_{{ $item->id }}" value="{{ $item->id }}">
-                                                    </div>
+                                                <div class="col-md-10">
+                                                    <input type="hidden" name="id_kriteria_{{ $kriteria->id }}" id="id_kriteria_{{ $kriteria->id }}" value="{{ $kriteria->id }}">
+                                                    <select class="form-select" name="nilai_{{ $kriteria->id }}" id="nilai_{{ $kriteria->id }}" required>
+                                                        <option selected disabled value="">Pilih Penilaian</option>
+                                                        @foreach($datasubkriteria as $subkriteria)
+                                                            @if ($subkriteria->id_kriteria == $kriteria->id)
+                                                                <option value="{{ $subkriteria->bobot }}">{{ $subkriteria->subkriteria }}</option>
+                                                            @endif
+                                                        @endforeach
+                                                    </select>
+                                                </div>
                                         </div>
                                     @endforeach
 
+
                             </div>
                             <div class="text-center">
-                                <button class="btn btn-primary" type="submit">Save</button>
+                                <button class="btn btn-primary"  style="width: 200px" type="submit">Save</button>
                                 <a href="{{ route('penilaian.create') }}">
-                                    <button class="btn btn-secondary" type="reset">Clear</button>
+                                    <button class="btn btn-secondary"  style="width: 200px" type="reset">Clear</button>
                                 </a>
                             </div>
                         </form>

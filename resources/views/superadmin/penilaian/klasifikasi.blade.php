@@ -116,28 +116,28 @@
                                     <!-- Table with stripped rows -->
                                     <table class="table table-striped">
                                         <thead>
-                                        <tr>
-                                            <th scope="col">No</th>
-                                            <th scope="col">Nama Pegawai</th>
-                                            <th scope="col">Integritas</th>
-                                            <th scope="col">Pelayanan</th>
-                                            <th scope="col">Kerapian</th>
-                                            <th scope="col">Kerjasama</th>
-                                            <th scope="col">Malapetaka</th>
-                                            <th scope="col">Kehadiran</th>
-                                        </tr>
-                                        </thead>
-                                        
-                                        {{-- <tbody>
-                                        @foreach ($kriteria as $item)
                                             <tr>
-                                                <td>{{ $item->id }}</td>
-                                                <td>{{ $item->kriteria }}</td>
-                                                <td>{{ $item->bobot }}</td>
-                                                <td>{{ $item->jenis }}</td>
+                                                <th scope="col">No</th>
+                                                <th scope="col">Nama Pegawai</th>
+                                                <th scope="col">Kriteria</th>
+                                                <th scope="col">Nilai</th>
                                             </tr>
-                                        @endforeach
-                                        </tbody> --}}
+                                        </thead>
+                                    
+                                        <tbody>
+                                            @foreach ($eval_pegawai->groupBy('nama') as $nama => $items)
+                                                <tr>
+                                                    <td>{{ $items->first()->id }}</td>
+                                                    <td>{{ $nama }}</td>
+                                                    <td>
+                                                        {{ implode(', ', $items->pluck('kriteria')->toArray()) }}
+                                                    </td>
+                                                    <td>
+                                                        {{ implode(', ', $items->pluck('nilai')->toArray()) }}
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
                                     </table>
                                     <!-- End Table with stripped rows -->
                                 {{-- </blockquote> --}}
@@ -153,16 +153,13 @@
                                     <!-- Table with stripped rows -->
                                     <table class="table table-striped">
                                         <thead>
-                                        <tr>
-                                            <th scope="col">No</th>
-                                            <th scope="col">Nama Pegawai</th>
-                                            <th scope="col">Integritas</th>
-                                            <th scope="col">Pelayanan</th>
-                                            <th scope="col">Kerapian</th>
-                                            <th scope="col">Kerjasama</th>
-                                            <th scope="col">Malapetaka</th>
-                                            <th scope="col">Kehadiran</th>
-                                        </tr>
+                                            <tr>
+                                                <th scope="col">No</th>
+                                                <th scope="col">Nama Pegawai</th>
+                                                @foreach ($kriteria as $item)
+                                                    <th scope="col">{{ $item->kriteria }}</th>
+                                                @endforeach
+                                            </tr>
                                         </thead>
                                         
                                         {{-- <tbody>

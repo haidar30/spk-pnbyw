@@ -25,26 +25,24 @@ class PenilaianController extends Controller
     {
         $getKriteria = Kriteria::all();
 
+        $insert = [];
+
         foreach ($getKriteria as $kriteria) {
-            $nilai[] = [
-                'nilai' => 'nilai_' . $kriteria->id,
-                'id' =>  'id_kriteria_' . $kriteria->id
-            ];
-        }
-        foreach ($nilai as $penilaian) {
-            $isi_nilai = $penilaian['nilai'];
-            $id_kriteria = $penilaian['id'];
+            $id_kriteria = 'id_kriteria_' . $kriteria->id;
+            $nilai_kriteria = 'nilai_' . $kriteria->id;
+
             $insert[] = [
                 'bulan' => $request->bulan,
-                'tahun' => $request->tahun,
                 'id_pegawai' => $request->id_pegawai,
                 'id_kriteria' => $request->$id_kriteria,
-                'nilai' => $request->$isi_nilai
+                'nilai' => $request->$nilai_kriteria,
             ];
         }
+
         Penilaian::insert($insert);
 
         return redirect()->route('penilaian.index')
-        ->with('success', 'Data Penilaian Baru Berhasil Disimpan');
+            ->with('success', 'Data Penilaian Baru Berhasil Disimpan');
     }
+
 }

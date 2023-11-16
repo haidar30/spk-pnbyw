@@ -60,6 +60,7 @@ Route::middleware(['auth', 'user-access:superadmin'])->group(function () {
     Route::get('/superadmin/dashboard', [SuperadminController::class, 'index'])->name('superadmin.index');
     Route::get('/superadmin/pegawai', [SuperadminController::class, 'pegawai'])->name('pegawai.index');
     Route::get('/superadmin/kriteria', [SuperadminController::class, 'kriteria'])->name('kriteria.index');
+    Route::get('/superadmin/subkriteria', [SuperadminController::class, 'subkriteria'])->name('subkriteria.index');
     Route::get('/superadmin/klasifikasi', [SuperadminController::class, 'klasifikasi'])->name('klasifikasi.index');
     Route::get('/superadmin/hasil', [SuperadminController::class, 'hasil'])->name('hasil.index');
     Route::get('/superadmin/laporan', [SuperadminController::class, 'laporan'])->name('laporan.index');

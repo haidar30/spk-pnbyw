@@ -35,34 +35,10 @@
                                     </button>
                                     <form class="dropdown-menu p-4">
                                         <div class="mb-3">
-                                            <label for="validationDefault04" class="form-label">Bulan
-                                                <span class="required">*</span></label>
-                                            <select class="form-select" name="bulan" id="bulan" required>
-                                                <option selected disabled value="">Pilih Bulan</option>
-                                                <option>Januari</option>
-                                                <option>Februari</option>
-                                                <option>Maret</option>
-                                                <option>April</option>
-                                                <option>Mei</option>
-                                                <option>Juni</option>
-                                                <option>Juli</option>
-                                                <option>Agustus</option>
-                                                <option>September</option>
-                                                <option>Oktober</option>
-                                                <option>November</option>
-                                                <option>Desember</option>
-                                            </select>
-                                        </div>
-
-                                        <div class="mb-3">
-                                            <label for="validationDefault04" class="form-label">Tahun
-                                                <span class="required">*</span></label>
-                                            <select class="form-select" name="tahun" id="tahun" required>
-                                                <option selected disabled value="">Pilih Tahun</option>
-                                                <option>2021</option>
-                                                <option>2023</option>
-                                                <option>2024</option>
-                                            </select>
+                                            <label for="validationDefault04" class="form-label">Bulan & Tahun Penilaian <span class="required">*</span></label>
+                                                <div class="">
+                                                <input type="month" class="form-control" name="bulan" max="{{date('Y-m')}}">
+                                                </div>
                                         </div>
                                         <div class="text-center">
                                             <button type="submit" class="btn btn-primary">Cari</button>
@@ -116,29 +92,31 @@
                                     <!-- Table with stripped rows -->
                                     <table class="table table-striped">
                                         <thead>
-                                        <tr>
-                                            <th scope="col">No</th>
-                                            <th scope="col">Nama Pegawai</th>
-                                            <th scope="col">Jabatan</th>
-                                            <th scope="col">Tahun Masuk</th>
-                                            <th scope="col">Kriteria</th>
-                                            <th scope="col">nilai</th>
-                                        </tr>
-                                        </thead>
-
-                                        <tbody>
-                                        @foreach ($eval_pegawai as $item)
                                             <tr>
-                                                <td>{{ $item->id }}</td>
-                                                <td>{{ $item->nama }}</td>
-                                                <td>{{ $item->jabatan }}</td>
-                                                <td>{{ $item->tahun_masuk }}</td>
-                                                <td>{{ $item->kriteria }}</td>
-                                                <td>{{ $item->nilai }}</td>
+                                                <th scope="col">No</th>
+                                                <th scope="col">Nama Pegawai</th>
+                                                <th scope="col">Kriteria</th>
+                                                <th scope="col">Nilai</th>
                                             </tr>
-                                        @endforeach
+                                        </thead>
+                                    
+                                        <tbody>
+                                            @foreach ($eval_pegawai->groupBy('nama') as $nama => $items)
+                                                <tr>
+                                                    <td>{{ $items->first()->id }}</td>
+                                                    <td>{{ $nama }}</td>
+                                                    <td>
+                                                        {{ implode(', ', $items->pluck('kriteria')->toArray()) }}
+                                                    </td>
+                                                    <td>
+                                                        {{ implode(', ', $items->pluck('nilai')->toArray()) }}
+                                                    </td>
+                                                </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
+                                    
+                                    
                                     <!-- End Table with stripped rows -->
                                 {{-- </blockquote> --}}
                             </div>
@@ -153,16 +131,13 @@
                                     <!-- Table with stripped rows -->
                                     <table class="table table-striped">
                                         <thead>
-                                        <tr>
-                                            <th scope="col">No</th>
-                                            <th scope="col">Nama Pegawai</th>
-                                            <th scope="col">Integritas</th>
-                                            <th scope="col">Pelayanan</th>
-                                            <th scope="col">Kerapian</th>
-                                            <th scope="col">Kerjasama</th>
-                                            <th scope="col">Malapetaka</th>
-                                            <th scope="col">Kehadiran</th>
-                                        </tr>
+                                            <tr>
+                                                <th scope="col">No</th>
+                                                <th scope="col">Nama Pegawai</th>
+                                                @foreach ($kriteria as $item)
+                                                    <th scope="col">{{ $item->kriteria }}</th>
+                                                @endforeach
+                                            </tr>
                                         </thead>
 
                                         {{-- <tbody>

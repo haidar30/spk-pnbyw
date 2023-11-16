@@ -147,10 +147,21 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link @if(Request::segment(2) != 'kriteria') collapsed @endif " href="{{ route('kriteria.index') }}">
-          <i class="bi bi-file-earmark-bar-graph"></i>
-          <span>Data Kriteria</span>
+        <a class="nav-link collapsed" data-bs-target="#kriteria-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-file-earmark-bar-graph"></i><span>Data Kriteria</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
+        <ul id="kriteria-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a  class="nav-link @if(Request::segment(2) != 'kriteria') collapsed @endif " href="{{ url('superadmin/kriteria') }}">
+              <i class="bi bi-circle"></i><span>Kriteria Penilaian</span>
+            </a>
+          </li>
+          <li>
+            <a  class="nav-link @if(Request::segment(2) != 'subkriteria') collapsed @endif " href="{{ url('superadmin/subkriteria') }}">
+              <i class="bi bi-circle"></i><span>Sub-Kriteria Penilaian</span>
+            </a>
+          </li>
+        </ul>
       </li>
 
       <li class="nav-item">
