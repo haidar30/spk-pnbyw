@@ -81,7 +81,7 @@
                             
                             <div class="text-center">
                                 <button class="btn btn-primary" style="width: 200px" type="submit">Save</button>
-                                <a href="{{ route('subkriteria.index') }}">
+                                <a href="{{ url('admin/subkriteria') }}">
                                     <button class="btn btn-secondary" style="width: 200px" type="button">Cancel</button>
                                 </a>
                             </div>

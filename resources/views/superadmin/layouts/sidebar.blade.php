@@ -140,7 +140,7 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link @if(Request::segment(2) != 'pegawai') collapsed @endif " href="{{ route('pegawai.index') }}">
+        <a class="nav-link @if(Request::segment(2) != 'pegawai') collapsed @endif " href="{{ route('superadmin.pegawai.index') }}">
           <i class="bi bi-person"></i>
           <span>Data Pegawai</span>
         </a>
@@ -169,12 +169,12 @@
           <i class="bi bi-menu-button-wide"></i><span> Penilaian Pegawai</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-            <a class="nav-link @if(Request::segment(2) != 'klasifikasi') collapsed @endif "  href="{{ route('klasifikasi.index')}}">
+            <a class="nav-link @if(Request::segment(2) != 'klasifikasi') collapsed @endif "  href="{{ route('superadmin.klasifikasi.index')}}">
               <i class="bi bi-circle"></i><span>Hasil Klasifikasi</span>
             </a>
           </li>
           <li>
-            <a class="nav-link @if(Request::segment(2) != 'hasil') collapsed @endif "  href="{{ route('hasil.index')}}">
+            <a class="nav-link @if(Request::segment(2) != 'hasil') collapsed @endif "  href="{{ route('superadmin.hasil.index')}}">
               <i class="bi bi-circle"></i><span>Hasil Penilaian</span>
             </a>
           </li>
@@ -182,7 +182,7 @@
       </li><!-- End Components Nav -->
 
       <li class="nav-item">
-        <a class="nav-link @if(Request::segment(2) != 'laporan') collapsed @endif " href="{{ route('laporan.index')}}">
+        <a class="nav-link @if(Request::segment(2) != 'laporan') collapsed @endif " href="{{ route('superadmin.laporan.index')}}">
           <i class="bi bi-envelope"></i>
           <span>Laporan</span>
         </a>

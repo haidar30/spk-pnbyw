@@ -30,7 +30,7 @@
                     <a href="{{ route('pegawai.create') }}"><button class="btn btn-primary" style="width: 200px" type="button">
                         Tambah</button></a> <br> <br>
                     <!-- Table with stripped rows -->
-                    <table class="table table-striped">
+                    <table class="table datatable">
                         <thead>
                         <tr>
                             <th scope="col">#</th>

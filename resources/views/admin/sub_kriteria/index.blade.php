@@ -31,7 +31,7 @@
                                 Tambah</button></a> <br> 
                                 <br>
                     <!-- Table with stripped rows -->
-                    <table class="table table-striped">
+                    <table class="table datatable">
                         <thead>
                         <tr>
                             <th scope="col">#</th>
