@@ -35,7 +35,7 @@
 
           <div class="d-flex align-items-center">
             <div class="ps-4">
-              <h2>20</h2>
+              <h2>{{$jumlahPegawai}}</h2>
               
             </div>
           </div>
@@ -53,7 +53,7 @@
 
           <div class="d-flex align-items-center">
             <div class="ps-4">
-              <h2>6</h2>
+              <h2>{{$jumlahKriteria}}</h2>
             </div>
           </div>
         </div>

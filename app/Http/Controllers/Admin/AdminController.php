@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\DataPegawai;
+use App\Models\Kriteria;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -14,6 +16,8 @@ class AdminController extends Controller
 
     public function index()
     {
-        return view('admin.index');
+        $jumlahPegawai = DataPegawai::count();
+        $jumlahKriteria = Kriteria::count();
+        return view('admin.index',  compact('jumlahPegawai', 'jumlahKriteria'));
     }
 }

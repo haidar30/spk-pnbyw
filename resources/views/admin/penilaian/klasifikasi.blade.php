@@ -4,7 +4,7 @@
 
 <!--  Page Title -->
 <div class="pagetitle">
-    <h1>Perhitungan Kinerja</h1>
+    <h1>Perhitungan Kinerja Pegawai Menggunakan Metode SAW</h1>
     <nav>
         <ol class="breadcrumb">
         <li class="breadcrumb-item"><a>Home</a></li>
@@ -16,47 +16,61 @@
 </div>
 <!-- End Page Title -->
 
+@if($errors->any())
+    @foreach ($errors->all() as $danger)
+        <h6 class="alert alert-danger">{{ $danger }}</h6>
+    @endforeach
+@endif
+@if (session('message'))
+    <h6 class="alert alert-success">{{ session('message') }}</h6>
+@endif
 
-<section class="section dashboard">
+
+<section class="section">
     <div class="row">
-        <!-- Left side columns -->
         <div class="col-lg-12">
-            <div class="row">
-                {{-- Create Form Pengalaman Kerja --}}
-                <div class="card">
-                    <div class="card-body">
-                        <div>
-                            <h5 class="card-title"> HASIL PERHITUNGAN KINERJA PEGAWAI MENGGUNAKAN METODE SAW</h5>
 
-                            <div class="row">
-                                <div class="col card-header">
-                                    <button type="button" class="btn btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
-                                        Pilih Bulan & Tahun
-                                    </button>
-                                    <form class="dropdown-menu p-4">
-                                        <div class="mb-3">
-                                            <label for="validationDefault04" class="form-label">Bulan & Tahun Penilaian <span class="required">*</span></label>
-                                                <div class="">
-                                                <input type="month" class="form-control" name="bulan" max="{{date('Y-m')}}">
-                                                </div>
-                                        </div>
-                                        <div class="text-center">
-                                            <button type="submit" class="btn btn-primary">Cari</button>
-                                        </div>
-                                    </form>
-                                </div>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Pilih Bulan dan Tahun Penilaian Evaluasi</h5>
+                    
+                    <form method="post" action="{{ url('admin/klasifikasi') }}">
+                        @csrf
+                        @method("GET")
+
+                        <div class="row mb-3">
+                            <label for="bulan" class="col-md-4 col-lg-3 col-form-label">Bulan Penilaian</label>
+                            <div class="col-md-8 col-lg-9">
+                                <input type="month" class="form-control" name="bulan" max="{{date('Y-m')}}">
                             </div>
                         </div>
-                        <!-- Vertical Form -->
+                        <div class="row mb-3 text-center">
+                            <div class="col-sm-12">
+                                <button type="submit" style="width: 200px" class="btn btn-primary">Cari Penilaian</button>
+                            </div>
+                        </div>
+                    </form>
+                    
+                </div>
+            </div>
 
+        </div>
+    </div>
+</section>
 
-                        <div class="card">
+<section class="section">
+    <div class="row">
+        <div class="col-lg-12">
+            
+                <div class="card">
+                    <div class="card-body">
+                            <h5 class="card-title"> HASIL PERHITUNGAN KINERJA PEGAWAI MENGGUNAKAN METODE SAW</h5>
+
+                            <div class="card">
                             <div class="card-header">
                                 <H5>BOBOT KRITERIA</H5>
                             </div>
                             <div class="card-title">
-                            {{-- <blockquote class="blockquote mb-0"> --}}
-                                <!-- Table with stripped rows -->
                                 <table class="table table-striped">
                                     <thead>
                                     <tr>
@@ -66,7 +80,6 @@
                                         <th scope="col"><i class="bi bi-bag"></i> Jenis</th>
                                     </tr>
                                     </thead>
-
                                     <tbody>
                                     @foreach ($kriteria as $item)
                                         <tr>
@@ -78,8 +91,6 @@
                                     @endforeach
                                     </tbody>
                                 </table>
-                                <!-- End Table with stripped rows -->
-                            {{-- </blockquote> --}}
                             </div>
                         </div>
 
@@ -89,6 +100,7 @@
                             </div>
                             <div class="card-title">
                                 <table class="table table-striped">
+
                                     <thead>
                                         <tr>
                                             <th scope="col">No</th>
@@ -98,7 +110,6 @@
                                             @endforeach
                                         </tr>
                                     </thead>
-                                
                                     <tbody>
                                         @forelse ($eval_pegawai->groupBy('pegawai.nama') as $eval)
                                         <tr>
@@ -110,7 +121,7 @@
                                             </td>
                                             @endforeach
                                             </tr>
-                                        @empty
+                                            @empty
                                             <tr>
                                                 <td colspan="{{ count($kriteria) + 2 }}">Tidak ada data</td>
                                             </tr>
@@ -126,6 +137,7 @@
                             </div>
                             <div class="card-title">
                                 <table class="table table-striped">
+
                                     <thead>
                                         <tr>
                                             <th scope="col">No</th>
@@ -135,7 +147,6 @@
                                             @endforeach
                                         </tr>
                                     </thead>
-                                
                                     <tbody>
                                         @forelse ($eval_pegawai->groupBy('pegawai.nama') as $eval)
                                         <tr>
@@ -147,7 +158,7 @@
                                             </td>
                                             @endforeach
                                             </tr>
-                                        @empty
+                                            @empty
                                             <tr>
                                                 <td colspan="{{ count($kriteria) + 2 }}">Tidak ada data</td>
                                             </tr>
@@ -162,31 +173,34 @@
                                 <H5>PREFERENSI</H5>
                             </div>
                             <div class="card-title">
-                                {{-- <blockquote class="blockquote mb-0"> --}}
-                                    <!-- Table with stripped rows -->
-                                    <table class="table table-striped">
-                                        <thead>
+                                <table class="table table-striped">
+
+                                    <thead>
                                         <tr>
                                             <th scope="col">No</th>
                                             <th scope="col">Nama Pegawai</th>
                                             <th scope="col">Perhitungan</th>
                                             <th scope="col">Peringkat</th>
                                         </tr>
-                                        </thead>
-
-                                        {{-- <tbody>
-                                        @foreach ($kriteria as $item)
-                                            <tr>
-                                                <td>{{ $item->id }}</td>
-                                                <td>{{ $item->kriteria }}</td>
-                                                <td>{{ $item->bobot }}</td>
-                                                <td>{{ $item->jenis }}</td>
+                                    </thead>
+                                    <tbody>
+                                        @forelse ($eval_pegawai->groupBy('pegawai.nama') as $eval)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $eval->first()->pegawai->nama }}</td>
+                                            <td></td>
+                                            <td></td>
+                                            @foreach ($kriteria as $item)
+                                            
+                                            @endforeach
                                             </tr>
-                                        @endforeach
-                                        </tbody> --}}
-                                    </table>
-                                    <!-- End Table with stripped rows -->
-                                {{-- </blockquote> --}}
+                                            @empty
+                                            <tr>
+                                                <td colspan="{{ count($kriteria) + 2 }}">Tidak ada data</td>
+                                            </tr>
+                                        @endforelse
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
 
@@ -196,6 +210,5 @@
         </div>
     </div>
 </section>
-
 
 @endsection
