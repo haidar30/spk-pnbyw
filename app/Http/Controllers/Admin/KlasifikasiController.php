@@ -42,6 +42,8 @@ class KlasifikasiController extends Controller
                 return redirect()->back()->withErrors($errors);
             }
         }
+
+        
         return view('admin.penilaian.klasifikasi', compact(['kriteria', 'eval_pegawai']));
     }
 }

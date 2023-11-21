@@ -59,10 +59,8 @@
 
 <section class="section">
     <div class="row">
-        <!-- Left side columns -->
         <div class="col-lg-12">
             <div class="row">
-                {{-- Create Form Pengalaman Kerja --}}
                 <div class="card">
                     <div class="card-body">
                         <div class="card">
@@ -98,10 +96,8 @@
                                         </tbody>
                                     </table>
                                 </div>
-                                    
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>

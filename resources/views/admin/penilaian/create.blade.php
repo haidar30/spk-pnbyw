@@ -63,15 +63,6 @@
                                     @endforeach
                                 </select>
                             </div>
-                            {{-- <div class="col-12">
-                                <label for="validationDefault04" class="form-label">Bulan
-                                    <span class="required">*</span></label>
-                                <select class="form-select" name="bulan" id="bulan" required>
-                                    <option selected disabled value="">Pilih Bulan</option>
-                                    <option>Januari</option>
-                                    <option>Februari</option>
-                                </select>
-                            </div> --}}
                             <div class="col-12">
                                 <label for="validationDefault04" class="form-label">Bulan & Tahun Penilaian <span class="required">*</span></label>
                                 <div class="">
@@ -99,6 +90,7 @@
                                                 </div>
                                         </div>
                                     @endforeach
+                                    
 
 
                             </div>

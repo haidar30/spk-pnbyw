@@ -168,7 +168,7 @@
           <div class="col-md-4 ">
             <div class="box ">
               <div class="img-box">
-                <img src="{{ asset('frontend/images/s1.png') }}" alt="">
+                <img src="{{ asset('frontend/images/s2.png') }}" alt="">
               </div>
               <div class="detail-box">
                 <h5>
@@ -183,7 +183,7 @@
           <div class="col-md-4 ">
             <div class="box ">
               <div class="img-box">
-                <img src="{{ asset('frontend/images/s2.png') }}" alt="">
+                <img src="{{ asset('frontend/images/s3.png') }}" alt="">
               </div>
               <div class="detail-box">
                 <h5>
@@ -198,7 +198,7 @@
           <div class="col-md-4 ">
             <div class="box ">
               <div class="img-box">
-                <img src="{{ asset('frontend/images/s3.png') }}" alt="">
+                <img src="{{ asset('frontend/images/s1.png') }}" alt="">
               </div>
               <div class="detail-box">
                 <h5>

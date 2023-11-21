@@ -65,7 +65,7 @@
                                 <label for="validationDefault04" class="form-label">Nilai Bobot
                                     <span class="required">*</span></label>
                                 <select class="form-select" name="bobot" id="bobot" required>
-                                    <option selected disabled value="">Pilih Nilai Bobot</option>
+                                    <option disabled value="">Pilih Nilai Bobot</option>
                                     <option value="1" {{ (isset($subkriteria) && $subkriteria->bobot == "1")
                                         ? 'selected' : '' }}>1</option>
                                     <option value="2" {{ (isset($subkriteria) && $subkriteria->bobot == "2")
