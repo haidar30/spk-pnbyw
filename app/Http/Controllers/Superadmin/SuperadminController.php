@@ -87,4 +87,9 @@ class SuperadminController extends Controller
     {
         return view('superadmin.laporan.index');
     }
+
+    public function profile()
+    {
+        return view('superadmin.profile');
+    }
 }

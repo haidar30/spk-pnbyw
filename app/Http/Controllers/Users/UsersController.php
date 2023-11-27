@@ -90,4 +90,9 @@ class UsersController extends Controller
 
         return view('users.penilaian.hasil', compact('eval_pegawai', 'kriteria'));
     }
+
+    public function profile()
+    {
+        return view('users.profile');
+    }
 }

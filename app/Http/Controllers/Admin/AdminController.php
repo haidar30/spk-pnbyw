@@ -20,4 +20,9 @@ class AdminController extends Controller
         $jumlahKriteria = Kriteria::count();
         return view('admin.index',  compact('jumlahPegawai', 'jumlahKriteria'));
     }
+
+    public function profile()
+    {
+        return view('admin.profile');
+    }
 }

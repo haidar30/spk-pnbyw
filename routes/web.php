@@ -39,12 +39,14 @@ Route::middleware(['auth', 'user-access:user'])->group(function () {
     Route::get('/user/dashboard', [UsersController::class, 'index'])->name('users.index');
     Route::get('/user/klasifikasi', [UsersController::class, 'klasifikasi'])->name('users.klasifikasi.index');
     Route::get('/user/hasil', [UsersController::class, 'hasil'])->name('users.hasil.index');
+    Route::get('/user/profile', [UsersController::class, 'profile'])->name('users.profile.index');
 });
 
 //Admin Routes List
 Route::middleware(['auth', 'user-access:admin'])->group(function () {
 
     Route::get('admin/dashboard', [AdminController::class, 'index'])->name('admin.index');
+    Route::get('admin/profile', [AdminController::class, 'profile'])->name('admin.profile.index');
     Route::resource('admin/pegawai', DataPegawaiController::class);
     Route::resource('admin/kriteria', KriteriaController::class);
     Route::resource('admin/subkriteria', SubKriteriaController::class);
@@ -64,6 +66,7 @@ Route::middleware(['auth', 'user-access:superadmin'])->group(function () {
     Route::get('/superadmin/klasifikasi', [SuperadminController::class, 'klasifikasi'])->name('superadmin.klasifikasi.index');
     Route::get('/superadmin/hasil', [SuperadminController::class, 'hasil'])->name('superadmin.hasil.index');
     Route::get('/superadmin/laporan', [SuperadminController::class, 'laporan'])->name('superadmin.laporan.index');
+    Route::get('/superadmin/profile', [SuperadminController::class, 'profile'])->name('superadmin.profile.index');
 });
 
 Route::get('/comingsoon', function () {
