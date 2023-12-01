@@ -76,8 +76,8 @@
                                 <select class="form-select" name="jenis" id="jenis" required>
                                     <option value="BENEFIT" {{ (isset($kriteria) && $kriteria->bobot == "BENEFIT")
                                         ? 'selected' : '' }}>BENEFIT (Plus)</option>
-                                    <option value="CONST" {{ (isset($kriteria) && $kriteria->bobot == "CONST")
-                                        ? 'selected' : '' }}>CONST (Minus)</option>
+                                    <option value="COST" {{ (isset($kriteria) && $kriteria->bobot == "COST")
+                                        ? 'selected' : '' }}>COST (Minus)</option>
                                 </select>
                             </div>
                             <div class="text-center">
