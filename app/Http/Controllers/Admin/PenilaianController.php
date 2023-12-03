@@ -22,6 +22,7 @@ class PenilaianController extends Controller
         // untuk pengecekan hasilnya
         dd($hasil_normalisasi);
 
+
         // dd($data_pegawai, $data_kriteria);
         return view('admin.penilaian.create', compact('datapegawai', 'datakriteria', 'datasubkriteria'));
     }
@@ -33,26 +34,43 @@ class PenilaianController extends Controller
         $daftar_penilaian = Penilaian::where('bulan', '2023-11')
                                     ->join('kriteria', 'kriteria.id', '=', 'penilaian.id_kriteria')
                                     ->join('data_pegawai', 'data_pegawai.id', '=', 'penilaian.id_pegawai')
+                                    ->orderby('penilaian.id_pegawai')
                                     ->get();
 
         // Looping setiap kriteria
         foreach ($getKriteria as $kriteria) {
-            // mencari nilai normalisasi
-            foreach ($daftar_penilaian as $key => $butir_penilaian) {
-                // cek benefit atau cost
-                if ($butir_penilaian->jenis == 'Benefit') {
-                    // mencari nilai max
-                    $max = $daftar_penilaian->where('kriteria', $kriteria->kriteria)->max('nilai');
-                    // hasil
-                    $result[$key] = $butir_penilaian->nilai / $max;
-                }else if ($butir_penilaian->jenis == 'Cost'){
-                    // mencari nilai min
-                    $min = $daftar_penilaian->where('kriteria', $kriteria->kriteria)->min('nilai');
-                    // hasil
-                    $result[$key] = $butir_penilaian->nilai / $min;
-                }
+            // mencari nilai maximum tiap kriteria
+            $max[$kriteria->kriteria] = $daftar_penilaian->where('kriteria', $kriteria->kriteria)->max('nilai');
+            // mencari nilai minimum tiap kriteria
+            $min[$kriteria->kriteria] = $daftar_penilaian->where('kriteria', $kriteria->kriteria)->min('nilai');
+        }
+
+        // mencari nilai normalisasi
+        foreach ($daftar_penilaian as $key => $butir_penilaian) {
+            // cek benefit atau cost
+            if ($butir_penilaian->jenis == 'Benefit') {
+                // hasil
+                // $result[$key] = [
+                //     'kriteria' => $butir_penilaian->kriteria,
+                //     'normalisasi' => $butir_penilaian->nilai / $max[$butir_penilaian->kriteria],
+                //     'id_pegawai' => $butir_penilaian->id_pegawai
+                // ];
+
+                // versi ceck isi
+                $result[$key] = $butir_penilaian->nilai / $max[$butir_penilaian->kriteria];
+            }else if ($butir_penilaian->jenis == 'Cost'){
+                // hasil
+                // $result[$key] = [
+                //     'kriteria' => $butir_penilaian->kriteria,
+                //     'normalisasi' => $butir_penilaian->nilai / min[$butir_penilaian->kriteria],
+                //     'id_pegawai' => $butir_penilaian->id_pegawai
+                // ];
+
+                // versi ceck isi
+                $result[$key] = $butir_penilaian->nilai / $min;
             }
         }
+        // mengembalikan hasil perhitungan normalisasi
         return $result;
     }
 
