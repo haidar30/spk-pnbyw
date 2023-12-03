@@ -20,7 +20,6 @@ class KlasifikasiController extends Controller
                         ->where('bulan', $request->bulan)
                         ->get();
 
-        
         if ($request != "") {
 
             $data = $request->all();
@@ -43,7 +42,6 @@ class KlasifikasiController extends Controller
             }
         }
 
-        
         return view('admin.penilaian.klasifikasi', compact(['kriteria', 'eval_pegawai']));
     }
 }
