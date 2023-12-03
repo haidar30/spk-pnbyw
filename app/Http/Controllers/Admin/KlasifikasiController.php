@@ -43,7 +43,7 @@ class KlasifikasiController extends Controller
         }
 
         // ini adalah cara untuk menggunakan fungsi dari normalisasi (biarkan dia private karena hanya untuk di file ini)
-        $hasil_normalisasi = $this->normalisasi($request->);
+        $hasil_normalisasi = $this->normalisasi($request->bulan);
         // untuk pengecekan hasilnya
         // dd($hasil_normalisasi);
 
