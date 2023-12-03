@@ -39,24 +39,25 @@ class KlasifikasiController extends Controller
             if ($request->bulan != "" && $check == 0) {
                 $errors = 'Form penilaian pegawai tidak ditemukan.';
                 return redirect()->back()->withErrors($errors);
+            }else {
+                // ini adalah cara untuk menggunakan fungsi dari normalisasi (biarkan dia private karena hanya untuk di file ini)
+                $hasil_normalisasi = $this->normalisasi($request->bulan);
+                // untuk pengecekan hasilnya
+                // dd($hasil_normalisasi);
+
+                // ini cara untuk menggunakan fungsi dari perhitungan nilai preferensi berdasarkan id_pegawai
+                $hasil_peringkat = $this->nilaiPreferensi($hasil_normalisasi);
+                // untuk pengecekan hasilnya
+                // dd($hasil_peringkat);
+
+                // cara menggunakan perangkingan.
+                // (jika akan menggunakan foreach perhatikan cara pemanggilan variable pada butir preferensi di bawah/ fungsi nilaiPre)
+                $perangkingan = collect($hasil_peringkat)->sortByDesc('nilai_preferensi');
+                // untuk pengecekan hasilnya
+                dd($perangkingan);
             }
         }
 
-        // ini adalah cara untuk menggunakan fungsi dari normalisasi (biarkan dia private karena hanya untuk di file ini)
-        $hasil_normalisasi = $this->normalisasi($request->bulan);
-        // untuk pengecekan hasilnya
-        // dd($hasil_normalisasi);
-
-        // ini cara untuk menggunakan fungsi dari perhitungan nilai preferensi berdasarkan id_pegawai
-        $hasil_peringkat = $this->nilaiPreferensi($hasil_normalisasi);
-        // untuk pengecekan hasilnya
-        // dd($hasil_peringkat);
-
-        // cara menggunakan perangkingan.
-        // (jika akan menggunakan foreach perhatikan cara pemanggilan variable pada butir preferensi di bawah/ fungsi nilaiPre)
-        $perangkingan = collect($hasil_peringkat)->sortByDesc('nilai_preferensi');
-        // untuk pengecekan hasilnya
-        dd($perangkingan);
 
         return view('admin.penilaian.klasifikasi', compact(['kriteria', 'eval_pegawai']));
     }
