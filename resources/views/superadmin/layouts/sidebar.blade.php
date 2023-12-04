@@ -170,12 +170,13 @@
         </ul>
       </li><!-- End Components Nav -->
 
-      <li class="nav-item">
+      {{-- <li class="nav-item">
         <a class="nav-link @if(Request::segment(2) != 'laporan') collapsed @endif " href="{{ route('superadmin.laporan.index')}}">
           <i class="bi bi-envelope"></i>
           <span>Laporan</span>
         </a>
-      </li><!-- End Contact Page Nav -->
+      </li> --}}
+      <!-- End Contact Page Nav -->
     </ul>
   </aside><!-- End Sidebar-->
 
