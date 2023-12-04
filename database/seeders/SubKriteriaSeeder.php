@@ -157,27 +157,27 @@ class SubKriteriaSeeder extends Seeder
             // SUB KRITERIA KEHADIRAN
             [
                 'id_kriteria' => '6',
-                'subkriteria' => 'Sangat Baik - Menunjukkan disiplin dan tanggung jawab terhadap jadwal kerja.',
+                'subkriteria' => 'Kehadiran 100%',
                 'bobot' => '5',
             ],
             [
                 'id_kriteria' => '6',
-                'subkriteria' => 'Baik - Menunjukkan tanggung jawab terhadap kewajiban kehadiran.',
+                'subkriteria' => '1X Tidak Hadir',
                 'bobot' => '4',
             ],
             [
                 'id_kriteria' => '6',
-                'subkriteria' => 'Cukup - Memerlukan perhatian agar kehadiran menjadi lebih konsisten.',
+                'subkriteria' => '2X Tidak Hadir',
                 'bobot' => '3',
             ],
             [
                 'id_kriteria' => '6',
-                'subkriteria' => 'Kurang - Dibutuhkan pendekatan yang lebih serius untuk meningkatkan kehadiran.',
+                'subkriteria' => '3X Tidak Hadri',
                 'bobot' => '2',
             ],
             [
                 'id_kriteria' => '6',
-                'subkriteria' => 'Buruk - Diperlukan tindakan disipliner untuk meningkatkan kehadiran.',
+                'subkriteria' => '4X Tidak Hadir',
                 'bobot' => '1',
             ],
         ]);
