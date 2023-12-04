@@ -32,15 +32,16 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Pilih Bulan dan Tahun Penilaian Evaluasi</h5>
-                    
+
                     <form method="post" action="{{ url('admin/hasil') }}">
                         @csrf
                         @method("GET")
 
                         <div class="row mb-3">
-                            <label for="bulan" class="col-md-4 col-lg-3 col-form-label">Bulan Penilaian</label>
+                            <label for="bulan" class="col-md-4 col-lg-3 col-form-label">Tahun Penilaian</label>
                             <div class="col-md-8 col-lg-9">
-                                <input type="month" class="form-control" name="bulan" max="{{date('Y-m')}}">
+                                {{-- <input type="year" class="form-control" name="tahun" max="{{date('Y')}}"> --}}
+                                <input type="number" class="form-control" name="tahun" placeholder="YYYY" min="1999" max="{{date('Y')}}">
                             </div>
                         </div>
                         <div class="row mb-3 text-center">
@@ -49,7 +50,7 @@
                             </div>
                         </div>
                     </form>
-                    
+
                 </div>
             </div>
 
@@ -69,23 +70,23 @@
                                     <table class="table table-striped">
                                         <thead>
                                         <tr>
-                                            <th scope="col">No</th>
+                                            <th scope="col">Rangking</th>
                                             <th scope="col">Nama Pegawai</th>
                                             <th scope="col">Nilai</th>
-                                            <th scope="col">Rangking</th>
                                             <th scope="col">Perpanjangan</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                            @forelse ($eval_pegawai->groupBy('pegawai.nama') as $eval)
+                                            @forelse ($tampil_preferensi as $item)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
-                                                <td>{{ $eval->first()->pegawai->nama }}</td>
-                                                <td></td>
+                                                <td>{{ $item['nama'] }}</td>
+                                                <td>{{ round($item['nilai_preferensi'], 2) }}</td>
+                                                <td>{{ $item['kontrak'] }}</td>
                                                 <td></td>
                                                 <td></td>
                                                 @foreach ($kriteria as $item)
-                                                
+
                                                 @endforeach
                                                 </tr>
                                                 @empty

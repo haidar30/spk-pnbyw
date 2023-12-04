@@ -136,7 +136,7 @@ class KlasifikasiController extends Controller
                 $id_pegawai = $butir_nilai['id_pegawai'];
                 $nama = $butir_nilai['nama'];
                 $bulan = $butir_nilai['bulan'];
-                $tahun = substr ($butir_nilai['bulan'], 0, 4);
+                $tahun = substr($butir_nilai['bulan'], 0, 4);
             }
             // data hasil preferensi
             $preferensi_pegawai[$key] = [
