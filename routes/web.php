@@ -55,10 +55,10 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::resource('admin/hasil', HasilController::class);
     Route::resource('admin/laporan', LaporanController::class);
 });
-    
+
 //Admin Routes List
 Route::middleware(['auth', 'user-access:superadmin'])->group(function () {
-    
+
     Route::get('/superadmin/dashboard', [SuperadminController::class, 'index'])->name('superadmin.index');
     Route::get('/superadmin/pegawai', [SuperadminController::class, 'pegawai'])->name('superadmin.pegawai.index');
     Route::get('/superadmin/kriteria', [SuperadminController::class, 'kriteria'])->name('superadmin.kriteria.index');
