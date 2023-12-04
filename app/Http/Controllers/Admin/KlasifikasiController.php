@@ -156,29 +156,15 @@ class KlasifikasiController extends Controller
 
         $data_preferensi = Preferensi::where('bulan', $bulan)->get();
 
-        // dd($data_preferensi);
         // jika ada harusnya update dulu baru return
-        if ($data_preferensi == null) {
-            // $data = collect($masuk_database)->sortByDesc('nilai_preferensi')->values()->toArray();
-            // $i = 1;
-            // foreach ($data as $key => $value) {
-            //     $masuk[$key] = $value + ['peringkat' => $i];
-            //     $i++;
-            // }
-            // dd($masuk_database);
-            Preferensi::Insert($masuk_database);
-            return $preferensi_pegawai;
+        if ($data_preferensi->value('id') == null) {
+                Preferensi::Insert($masuk_database);
+                return $preferensi_pegawai;
         }else{
-            // foreach ($preferensi_pegawai as $k => $v) {
             foreach ($data_preferensi as $key => $pre) {
-                // $upload[$k] = $v + ['id' => $pre->id];
                 $data = collect($preferensi_pegawai)->where('id_pegawai', $pre->id_pegawai)->toArray();
-                // dd($pre->id);
                 Preferensi::find($pre->id)->update($data);
             }
-            // }
-            // dd($upload->id);
-            // dd(Preferensi::find($data_preferensi->id));
             return $preferensi_pegawai;
         }
     }
