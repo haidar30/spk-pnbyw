@@ -33,7 +33,7 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Pilih Bulan dan Tahun Penilaian Evaluasi</h5>
-                    
+
                     <form method="post" action="{{ url('admin/klasifikasi') }}">
                         @csrf
                         @method("GET")
@@ -50,7 +50,7 @@
                             </div>
                         </div>
                     </form>
-                    
+
                 </div>
             </div>
 
@@ -61,7 +61,7 @@
 <section class="section">
     <div class="row">
         <div class="col-lg-12">
-            
+
                 <div class="card">
                     <div class="card-body">
                             <h5 class="card-title"> HASIL PERHITUNGAN KINERJA PEGAWAI MENGGUNAKAN METODE SAW</h5>
@@ -131,13 +131,13 @@
                             </div>
                         </div>
 
+                        @if (isset($tampil_normalisasi))
                         <div class="card">
                             <div class="card-header">
                                 <H5>NORMALISASI NILAI EVALUASI PEGAWAI</H5>
                             </div>
                             <div class="card-title">
                                 <table class="table table-striped">
-
                                     <thead>
                                         <tr>
                                             <th scope="col">No</th>
@@ -148,14 +148,14 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @forelse ($eval_pegawai->groupBy('pegawai.nama') as $eval)
+                                        @forelse ($tampil_normalisasi as $k => $normalisasi)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $eval->first()->pegawai->nama }}</td>
+                                            <td>{{ $normalisasi[$k]['nama'] }}</td>
                                             @foreach ($kriteria as $item)
-                                            <td>
-                                                {{ $eval->where('id_kriteria', $item->id)->first()->nilai }}
-                                            </td>
+                                                <td>
+                                                    {{ collect($normalisasi)->where('kriteria', $item->kriteria)->value('normalisasi') }}
+                                                </td>
                                             @endforeach
                                             </tr>
                                             @empty
@@ -167,7 +167,9 @@
                                 </table>
                             </div>
                         </div>
+                        @endif
 
+                        @if (isset($perangkingan))
                         <div class="card">
                             <div class="card-header">
                                 <H5>PREFERENSI</H5>
@@ -177,22 +179,17 @@
 
                                     <thead>
                                         <tr>
-                                            <th scope="col">No</th>
-                                            <th scope="col">Nama Pegawai</th>
-                                            <th scope="col">Perhitungan</th>
                                             <th scope="col">Peringkat</th>
+                                            <th scope="col">Nama Pegawai</th>
+                                            <th scope="col">Nilai Preferensi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @forelse ($eval_pegawai->groupBy('pegawai.nama') as $eval)
+                                        @forelse ($perangkingan as $rank)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $eval->first()->pegawai->nama }}</td>
-                                            <td></td>
-                                            <td></td>
-                                            @foreach ($kriteria as $item)
-                                            
-                                            @endforeach
+                                            <td>{{ $rank['nama'] }}</td>
+                                            <td>{{ $rank['nilai_preferensi'] }}</td>
                                             </tr>
                                             @empty
                                             <tr>
@@ -203,7 +200,7 @@
                                 </table>
                             </div>
                         </div>
-
+                        @endif
                     </div>
                 </div>
             </div>
