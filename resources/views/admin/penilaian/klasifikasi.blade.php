@@ -151,7 +151,7 @@
                                         @forelse ($tampil_normalisasi as $k => $normalisasi)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $normalisasi[$k]['nama'] }}</td>
+                                            <td>{{ collect($normalisasi)->value('nama') }}</td>
                                             @foreach ($kriteria as $item)
                                                 <td>
                                                     {{ collect($normalisasi)->where('kriteria', $item->kriteria)->value('normalisasi') }}

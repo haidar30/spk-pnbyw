@@ -61,9 +61,23 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav  ">
               <li class="nav-item">
-                <a class="nav-link" href="login"> <i class="fa fa-user" aria-hidden="true"></i> Login</a>
+                @if (Route::has('login'))
+                    @auth
+                        {{-- <a href="{{ url('/') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Home</a> --}}
+                        {{-- Auth::user(); --}}
+                        <a class="nav-link" href="{{ url('user/dashboard') }}"> <i class="fa fa-user" aria-hidden="true"></i> Home</a>
+                    @else
+                        <a class="nav-link" href="{{ url('/login') }}"> <i class="fa fa-user" aria-hidden="true"></i> Login</a>
+
+                        <a href="{{ route('login') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log in</a>
+
+                        @if (Route::has('register'))
+                            <a href="{{ route('register') }}" class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a>
+                        @endif
+                    @endauth
+                @endif
               </li>
-              
+
             </ul>
           </div>
         </nav>
@@ -82,9 +96,9 @@
                     <h1>
                       E-EKP PN Byw
                     </h1>
-                    
+
                     <p>
-                      Elektronik - Evaluasi Kinerja Pegawai <br> 
+                      Elektronik - Evaluasi Kinerja Pegawai <br>
                       Penerapan sistem evaluasi kinerja elektronik seperti E-EKP bertujuan untuk membantu efisiensi dan transparansi dalam proses evaluasi kinerja pegawai. Dengan pendekatan elektronik, evaluasi dapat dilakukan secara daring atau melalui platform digital, memungkinkan penyimpanan data yang lebih baik, akses yang mudah, dan pengelolaan yang lebih efisien.
                     </p>
                   </div>
@@ -237,7 +251,7 @@
               <a href="">
                 <i class="fa fa-phone" aria-hidden="true"></i>
                 <span>
-                  Tlp. 0333-416706 Fax. 0333-424818 
+                  Tlp. 0333-416706 Fax. 0333-424818
                 </span>
               </a>
               <a href="">

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\DataPegawai;
 use App\Models\Kriteria;
 use App\Models\Penilaian;
+use App\Models\Preferensi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
@@ -83,7 +84,7 @@ class KlasifikasiController extends Controller
                                     ->join('data_pegawai', 'data_pegawai.id', '=', 'penilaian.id_pegawai')
                                     ->orderby('penilaian.id_pegawai')
                                     ->get();
-
+        // dd($daftar_penilaian);
         // Looping setiap kriteria
         foreach ($getKriteria as $kriteria) {
             // mencari nilai maximum tiap kriteria
@@ -102,6 +103,7 @@ class KlasifikasiController extends Controller
                     'normalisasi' => $butir_penilaian->nilai / $max[$butir_penilaian->kriteria],
                     'id_pegawai' => $butir_penilaian->id_pegawai,
                     'nama' => $butir_penilaian->nama,
+                    'bulan' => $butir_penilaian->bulan,
                     'bobot' => $butir_penilaian->bobot / 100
                 ];
 
@@ -114,6 +116,7 @@ class KlasifikasiController extends Controller
                     'normalisasi' => $butir_penilaian->nilai / $min[$butir_penilaian->kriteria],
                     'id_pegawai' => $butir_penilaian->id_pegawai,
                     'nama' => $butir_penilaian->nama,
+                    'bulan' => $butir_penilaian->bulan,
                     'bobot' => $butir_penilaian->bobot / 100
                 ];
                 // versi ceck isi
@@ -132,6 +135,8 @@ class KlasifikasiController extends Controller
                 $butir_preferensi [$k] = $butir_nilai['bobot'] * $butir_nilai['normalisasi'];
                 $id_pegawai = $butir_nilai['id_pegawai'];
                 $nama = $butir_nilai['nama'];
+                $bulan = $butir_nilai['bulan'];
+                $tahun = substr ($butir_nilai['bulan'], 0, 4);
             }
             // data hasil preferensi
             $preferensi_pegawai[$key] = [
@@ -139,7 +144,42 @@ class KlasifikasiController extends Controller
                 'id_pegawai' => $id_pegawai,
                 'nama' => $nama,
             ];
+
+            $masuk_database[$key] =[
+                'nilai_preferensi' => array_sum($butir_preferensi),
+                'id_pegawai' => $id_pegawai,
+                'bulan' => $bulan,
+                'tahun' => $tahun,
+            ];
         }
-        return $preferensi_pegawai;
+        // dd($bulan);
+
+        $data_preferensi = Preferensi::where('bulan', $bulan)->get();
+
+        // dd($data_preferensi);
+        // jika ada harusnya update dulu baru return
+        if ($data_preferensi == null) {
+            // $data = collect($masuk_database)->sortByDesc('nilai_preferensi')->values()->toArray();
+            // $i = 1;
+            // foreach ($data as $key => $value) {
+            //     $masuk[$key] = $value + ['peringkat' => $i];
+            //     $i++;
+            // }
+            // dd($masuk_database);
+            Preferensi::Insert($masuk_database);
+            return $preferensi_pegawai;
+        }else{
+            // foreach ($preferensi_pegawai as $k => $v) {
+            foreach ($data_preferensi as $key => $pre) {
+                // $upload[$k] = $v + ['id' => $pre->id];
+                $data = collect($preferensi_pegawai)->where('id_pegawai', $pre->id_pegawai)->toArray();
+                // dd($pre->id);
+                Preferensi::find($pre->id)->update($data);
+            }
+            // }
+            // dd($upload->id);
+            // dd(Preferensi::find($data_preferensi->id));
+            return $preferensi_pegawai;
+        }
     }
 }
