@@ -20,7 +20,7 @@
         <div class="card top-selling overflow-auto">
 
           <div class="card-body pb-0">
-            <h4 class="card-title">SELAMAT DATANG {{ Auth::user()->name }}</h4>
+            <h4 class="card-title">SELAMAT DATANG!! {{ Auth::user()->name }} (Ketua Pengadilan)</h4>
             <h6 class="title">E-EKP Merupakan Elektronik Evaluasi Kinerja Pegawai Pada Honorer di Pengadilan Negeri Banyuwangi</h6>
 
           </div>
