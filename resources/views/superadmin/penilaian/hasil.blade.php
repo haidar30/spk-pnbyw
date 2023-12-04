@@ -31,7 +31,7 @@
 
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Pilih Bulan dan Tahun Penilaian Evaluasi</h5>
+                    <h5 class="card-title">Pilih Tahun Penilaian Evaluasi</h5>
 
                     <form method="post" action="{{ url('superadmin/hasil') }}">
                         @csrf
@@ -40,7 +40,6 @@
                         <div class="row mb-3">
                             <label for="bulan" class="col-md-4 col-lg-3 col-form-label">Tahun Penilaian</label>
                             <div class="col-md-8 col-lg-9">
-                                {{-- <input type="year" class="form-control" name="tahun" max="{{date('Y')}}"> --}}
                                 <input type="number" class="form-control" name="tahun" placeholder="YYYY" min="1999" max="{{date('Y')}}">
                             </div>
                         </div>
