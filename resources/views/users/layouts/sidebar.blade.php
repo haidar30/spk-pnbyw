@@ -123,6 +123,14 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
+        <a class="d-flex flex-column align-items-center text-center">
+          <img src="{{ asset('backend/assets/img/profile-img.jpg') }}" alt="Profile" class="rounded-circle mb-1">
+          <span class="text-black font-weight-bold">{{ Auth::user()->name }}</span>
+          <span class="text-black">Pegawai Dipa</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
         <a class="nav-link  @if(Request::segment(2) != 'dashboard') collapsed @endif "  href="{{ url('user/dashboard') }}">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
