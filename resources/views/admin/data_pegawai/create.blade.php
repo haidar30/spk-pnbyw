@@ -6,14 +6,14 @@
 <div class="pagetitle">
     <h1>Tambah Data Pegawai</h1>
     <nav>
-      <ol class="breadcrumb">
+        <ol class="breadcrumb">
         <li class="breadcrumb-item"><a>Home</a></li>
         <li class="breadcrumb-item"><a>Dashboard</a></li>
         <li class="breadcrumb-item"><a>Data Pegawai</a></li>
         <li class="breadcrumb-item active">Tambah Data Pegawai</li>
-      </ol>
+        </ol>
     </nav>
-  </div>
+</div>
 <!-- End Page Title -->
 
 <section class="section dashboard">
@@ -53,17 +53,28 @@
                                 value="{{ isset($data_pegawai) ? $data_pegawai->nama : '' }}" required>
                             </div>
                             <div class="col-12">
-                                <label for="cname" class="form-label">Jabatan
+                                <label for="validationDefault04" class="form-label">Jabatan
                                     <span class="required">*</span></label>
-                                <input type="text" class="form-control" id="jabatan" name="jabatan" minlength="2"
-                                value="{{ isset($data_pegawai) ? $data_pegawai->jabatan : '' }}" required>
+                                <select class="form-select" name="jabatan" id="jabatan" required>
+                                    <option selected disabled value="">Pilih Jabatan</option>
+                                    <option value="Honorer Dipa" {{ (isset($data_pegawai) && $data_pegawai->jabatan == "Honorer Dipa")
+                                        ? 'selected' : '' }}>Honorer Dipa</option>
+                                    <option value="Honorer Non-Dipa" {{ (isset($data_pegawai) && $data_pegawai->jabatan == "Honorer Non-Dipa")
+                                        ? 'selected' : '' }}>Honorer Non-Dipa</option>
+                                </select>
                             </div>
                             <div class="col-12">
-                                <label for="cname" class="form-label">Status
+                                <label for="validationDefault04" class="form-label">Status
                                     <span class="required">*</span></label>
-                                <input type="text" class="form-control" id="status" name="status" minlength="3"
-                                value="{{ isset($data_pegawai) ? $data_pegawai->status : '' }}"
-                                required>
+                                <select class="form-select" name="status" id="status" required>
+                                    <option selected disabled value="">Pilih Status</option>
+                                    <option value="Pramubakti" {{ (isset($data_pegawai) && $data_pegawai->status == "Pramubakti")
+                                        ? 'selected' : '' }}>Pramubakti</option>
+                                    <option value="Driver" {{ (isset($data_pegawai) && $data_pegawai->status == "Driver")
+                                        ? 'selected' : '' }}>Driver</option>
+                                    <option value="Satpam" {{ (isset($data_pegawai) && $data_pegawai->status == "Satpam")
+                                        ? 'selected' : '' }}>Satpam</option>
+                                </select>
                             </div>
                             <div class="col-12">
                                 <label for="curl" class="form-label">Tahun Masuk

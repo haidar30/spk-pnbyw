@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\KriteriaController;
 use App\Http\Controllers\Admin\PenilaianController;
 use App\Http\Controllers\Admin\KlasifikasiController;
 use App\Http\Controllers\Admin\LaporanController;
+use App\Http\Controllers\Admin\PenggunaController;
 use App\Http\Controllers\Admin\SubKriteriaController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Superadmin\SuperadminController;
@@ -53,10 +54,11 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::resource('admin/penilaian', PenilaianController::class);
     Route::resource('admin/klasifikasi', KlasifikasiController::class);
     Route::resource('admin/hasil', HasilController::class);
+    Route::resource('admin/pengguna', PenggunaController::class);
     Route::resource('admin/laporan', LaporanController::class);
 });
 
-//Admin Routes List
+//Superadmin Routes List
 Route::middleware(['auth', 'user-access:superadmin'])->group(function () {
 
     Route::get('/superadmin/dashboard', [SuperadminController::class, 'index'])->name('superadmin.index');

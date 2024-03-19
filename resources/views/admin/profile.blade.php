@@ -21,9 +21,9 @@
             <div class="card">
             <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
-                <img src="{{ asset('backend/assets/img/profile-img.jpg') }}" alt="Profile" class="rounded-circle">
+                <img src="{{ asset('backend/assets/img/fotosupari.jpg') }}" alt="Profile" class="rounded-circle">
                 <h2 class="username">{{ Auth::user()->name }}</h2>
-                <h3>Kasubag Kepegawaian</h3>
+                <h3>( {{ Auth::user()->jabatan }} )</h3>
                 <div class="social-links mt-2">
                 <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
                 <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
@@ -72,7 +72,7 @@
 
                     <div class="row">
                     <div class="col-lg-3 col-md-4 label">Position</div>
-                    <div class="col-lg-9 col-md-8">Kasubag Kepegawaian</div>
+                    <div class="col-lg-9 col-md-8">{{ Auth::user()->jabatan }}</div>
                     </div>
 
                     <div class="row">
@@ -99,7 +99,7 @@
                     <div class="row mb-3">
                         <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
                         <div class="col-md-8 col-lg-9">
-                        <img src="{{ asset('backend/assets/img/profile-img.jpg') }}" alt="Profile">
+                        <img src="{{ asset('backend/assets/img/fotosupari.jpg') }}" alt="Profile">
                         <div class="pt-2">
                             <a href="#" class="btn btn-primary btn-sm" title="Upload new profile image"><i class="bi bi-upload"></i></a>
                             <a href="#" class="btn btn-danger btn-sm" title="Remove my profile image"><i class="bi bi-trash"></i></a>
@@ -117,7 +117,7 @@
                     <div class="row mb-3">
                         <label for="Job" class="col-md-4 col-lg-3 col-form-label">Position</label>
                         <div class="col-md-8 col-lg-9">
-                        <input name="job" type="text" class="form-control" id="Job" value="Kasubag Kepegawaian">
+                        <input name="job" type="text" class="form-control" id="Job" value="{{ Auth::user()->jabatan }}">
                         </div>
                     </div>
 

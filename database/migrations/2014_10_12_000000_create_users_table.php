@@ -18,6 +18,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->boolean('type')->default(false); // Users : 0>User, 1>Admin, 2>Superadmin
+            $table->string('jabatan')->default('Honorer Dipa');
             $table->rememberToken();
             $table->timestamps();
         });

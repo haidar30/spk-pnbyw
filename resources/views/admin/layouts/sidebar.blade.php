@@ -71,14 +71,14 @@
         <li class="nav-item dropdown pe-3">
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="" data-bs-toggle="dropdown">
-            <img src="{{ asset('backend/assets/img/profile-img.jpg') }}" alt="Profile" class="rounded-circle">
+            <img src="{{ asset('backend/assets/img/fotosupari.jpg') }}" alt="Profile" class="rounded-circle">
             <span class="d-none d-md-block dropdown-toggle ps-2 text-white">{{ Auth::user()->name }}</span>
           </a><!-- End Profile Iamge Icon -->
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
               <h6>{{ Auth::user()->name }}</h6>
-              <span>Kasubag Kepegawaian</span> <br>
+              <span>( {{ Auth::user()->jabatan }} )</span> <br>
               <span>{{ Auth::user()->email }}</span>
             </li>
             <li>
@@ -124,9 +124,9 @@
 
       <li class="nav-item">
         <a class="d-flex flex-column align-items-center text-center">
-          <img src="{{ asset('backend/assets/img/profile-img.jpg') }}" alt="Profile" class="rounded-circle mb-1">
+          <img src="{{ asset('backend/assets/img/fotosupari.jpg') }}" alt="Profile" class="rounded-circle mb-1">
           <span class="text-black font-weight-bold">{{ Auth::user()->name }}</span>
-          <span class="text-black">Kasubag Kepegawaian</span>
+          <span class="text-black">( {{ Auth::user()->jabatan }} )</span>
         </a>
       </li>
       
@@ -183,6 +183,13 @@
             </a>
           </li>
         </ul>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link @if(Request::segment(2) != 'pengguna') collapsed @endif " href="{{ url('admin/pengguna') }}">
+          <i class="ri-admin-line"></i>
+          <span>Data Pengguna</span>
+        </a>
       </li>
 
       {{-- <li class="nav-item">

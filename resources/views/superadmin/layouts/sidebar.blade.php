@@ -71,7 +71,7 @@
         <li class="nav-item dropdown pe-3">
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="" data-bs-toggle="dropdown">
-            <img src="{{ asset('backend/assets/img/profile-img.jpg') }}" alt="Profile" class="rounded-circle">
+            <img src="{{ asset('backend/assets/img/fotopandji.jpg') }}" alt="Profile" class="rounded-circle">
             <span class="d-none d-md-block dropdown-toggle ps-2 text-white">{{ Auth::user()->name }}</span>
           </a><!-- End Profile Iamge Icon -->
 
@@ -124,9 +124,9 @@
 
       <li class="nav-item">
         <a class="d-flex flex-column align-items-center text-center">
-          <img src="{{ asset('backend/assets/img/profile-img.jpg') }}" alt="Profile" class="rounded-circle mb-1">
+          <img src="{{ asset('backend/assets/img/fotopandji.jpg') }}" alt="Profile" class="rounded-circle mb-1">
           <span class="text-black font-weight-bold">{{ Auth::user()->name }}</span>
-          <span class="text-black">Ketua Pengadilan</span>
+          <span class="text-black">( Ketua Pengadilan )</span>
         </a>
       </li>
 

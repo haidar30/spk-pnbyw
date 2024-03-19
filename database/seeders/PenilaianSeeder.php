@@ -717,12 +717,12 @@ class PenilaianSeeder extends Seeder
             [ 'id_pegawai' => '7', 'bulan' => '2023-12', 'id_kriteria' => '5', 'nilai' => '5' ],
             [ 'id_pegawai' => '7', 'bulan' => '2023-12', 'id_kriteria' => '6', 'nilai' => '5' ],
             // ID Pegawai 8
-            // [ 'id_pegawai' => '8', 'bulan' => '2023-12', 'id_kriteria' => '1', 'nilai' => '5' ],
-            // [ 'id_pegawai' => '8', 'bulan' => '2023-12', 'id_kriteria' => '2', 'nilai' => '4' ],
-            // [ 'id_pegawai' => '8', 'bulan' => '2023-12', 'id_kriteria' => '3', 'nilai' => '5' ],
-            // [ 'id_pegawai' => '8', 'bulan' => '2023-12', 'id_kriteria' => '4', 'nilai' => '4' ],
-            // [ 'id_pegawai' => '8', 'bulan' => '2023-12', 'id_kriteria' => '5', 'nilai' => '5' ],
-            // [ 'id_pegawai' => '8', 'bulan' => '2023-12', 'id_kriteria' => '6', 'nilai' => '5' ],
+            [ 'id_pegawai' => '8', 'bulan' => '2023-12', 'id_kriteria' => '1', 'nilai' => '5' ],
+            [ 'id_pegawai' => '8', 'bulan' => '2023-12', 'id_kriteria' => '2', 'nilai' => '4' ],
+            [ 'id_pegawai' => '8', 'bulan' => '2023-12', 'id_kriteria' => '3', 'nilai' => '5' ],
+            [ 'id_pegawai' => '8', 'bulan' => '2023-12', 'id_kriteria' => '4', 'nilai' => '4' ],
+            [ 'id_pegawai' => '8', 'bulan' => '2023-12', 'id_kriteria' => '5', 'nilai' => '5' ],
+            [ 'id_pegawai' => '8', 'bulan' => '2023-12', 'id_kriteria' => '6', 'nilai' => '5' ],
         // End Penilaian Bulan Desember 2023
         ]);
     }
