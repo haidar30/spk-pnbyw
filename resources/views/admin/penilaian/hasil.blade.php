@@ -31,7 +31,7 @@
 
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Pilih Bulan dan Tahun Penilaian Evaluasi</h5>
+                    <h5 class="card-title">Pilih Tahun Penilaian Evaluasi</h5>
 
                     <form method="post" action="{{ url('admin/hasil') }}">
                         @csrf
