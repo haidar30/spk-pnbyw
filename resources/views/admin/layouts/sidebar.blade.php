@@ -148,25 +148,27 @@
         <a class="nav-link collapsed" data-bs-target="#kriteria-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-file-earmark-bar-graph"></i><span>Data Kriteria</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-        <ul id="kriteria-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+        <ul id="kriteria-nav" class="nav-content collapse @if(Request::segment(2) == 'kriteria' || Request::segment(2) == 'subkriteria') show @endif" data-bs-parent="#sidebar-nav">
           <li>
-            <a  class="nav-link @if(Request::segment(2) != 'kriteria') collapsed @endif " href="{{ url('admin/kriteria') }}">
+            <a class="nav-link @if(Request::segment(2) != 'kriteria') collapsed @endif" href="{{ url('admin/kriteria') }}">
               <i class="bi bi-circle"></i><span>Kriteria Penilaian</span>
             </a>
           </li>
           <li>
-            <a  class="nav-link @if(Request::segment(2) != 'subkriteria') collapsed @endif " href="{{ url('admin/subkriteria') }}">
+            <a class="nav-link @if(Request::segment(2) != 'subkriteria') collapsed @endif" href="{{ url('admin/subkriteria') }}">
               <i class="bi bi-circle"></i><span>Sub-Kriteria Penilaian</span>
             </a>
           </li>
         </ul>
       </li>
+      
+      
 
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+        <a class="nav-link collapsed" data-bs-target="#penilaian-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-menu-button-wide"></i><span>Proses Penilaian</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-        <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+        <ul id="penilaian-nav" class="nav-content collapse @if(Request::segment(2) == 'penilaian' || Request::segment(2) == 'klasifikasi' || Request::segment(2) == 'hasil') show @endif" data-bs-parent="#sidebar-nav">
           <li>
             <a  class="nav-link @if(Request::segment(2) != 'penilaian') collapsed @endif " href="{{ url('admin/penilaian') }}">
               <i class="bi bi-circle"></i><span>Penilaian Pegawai</span>
