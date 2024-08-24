@@ -12,4 +12,9 @@ class DataPegawai extends Model
     protected $fillable = [
         'nama', 'jabatan', 'status', 'tahun_masuk', 'alamat',
     ];
+
+    public function penilaian()
+    {
+        return $this->hasMany(Penilaian::class, 'id_pegawai', 'id');
+    }
 }

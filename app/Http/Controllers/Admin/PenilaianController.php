@@ -16,11 +16,12 @@ class PenilaianController extends Controller
         $datapegawai = DataPegawai::all();
         $datakriteria = Kriteria::all();
         $datasubkriteria = SubKriteria::all();
-        $penilaian = DB::table('penilaian')->get();
+        // $pegawai = DB::table('penilaian')->get();
+        $penilaians = Penilaian::with('pegawai')->get();
 
 
-        // dd($data_pegawai, $data_kriteria);
-        return view('admin.penilaian.index', compact('penilaian', 'datapegawai', 'datakriteria', 'datasubkriteria'));
+        // dd($pegawais);
+        return view('admin.penilaian.index', compact('penilaians','datapegawai','datakriteria', 'datasubkriteria'));
         // return view('admin.penilaian.create', compact('datapegawai', 'datakriteria', 'datasubkriteria'));
     }
 
@@ -60,5 +61,18 @@ class PenilaianController extends Controller
         DB::table('penilaian')->where('id',$id)->delete();
         return redirect()->route('penilaian.index')->with('success', 'Data Penilaian berhasil dihapus');
     }
+
+    // public function update(Request $request, $id)
+    // {
+    //     $penilaian = Penilaian::findOrFail($id);
+    //     $penilaian->nilai = $request->input('nilai');
+    //     $penilaian->save();
+    
+    //     return redirect()->back()->with('success', 'Data berhasil diubah.');
+    // }
+    
+    
+    
+
 
 }
