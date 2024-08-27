@@ -47,23 +47,23 @@ class KlasifikasiController extends Controller
                 return redirect()->back()->withErrors($errors);
 
             }else if($request->bulan != "" && $check != 0){
-            // ini adalah cara untuk menggunakan fungsi dari normalisasi (biarkan dia private karena hanya untuk di file ini)
-            $hasil_normalisasi = $this->normalisasi($request->bulan);
-            // untuk pengecekan hasilnya
-            // dd($hasil_normalisasi);
-            $tampil_normalisasi = $hasil_normalisasi->values()->toArray();
-            // dd($tampil_normalisasi);
+                // ini adalah cara untuk menggunakan fungsi dari normalisasi (biarkan dia private karena hanya untuk di file ini)
+                $hasil_normalisasi = $this->normalisasi($request->bulan);
+                // untuk pengecekan hasilnya
+                // dd($hasil_normalisasi);
+                $tampil_normalisasi = $hasil_normalisasi->values()->toArray();
+                // dd($tampil_normalisasi);
 
-            // ini cara untuk menggunakan fungsi dari perhitungan nilai preferensi berdasarkan id_pegawai
-            $hasil_preferensi = $this->nilaiPreferensi($hasil_normalisasi);
-            // untuk pengecekan hasilnya
-            // dd($hasil_preferensi);
+                // ini cara untuk menggunakan fungsi dari perhitungan nilai preferensi berdasarkan id_pegawai
+                $hasil_preferensi = $this->nilaiPreferensi($hasil_normalisasi);
+                // untuk pengecekan hasilnya
+                // dd($hasil_preferensi);
 
-            // cara menggunakan perangkingan.
-            // (jika akan menggunakan foreach perhatikan cara pemanggilan variable pada butir preferensi di bawah/ fungsi nilaiPre)
-            $perangkingan = collect($hasil_preferensi)->sortByDesc('nilai_preferensi')->values()->toArray();
-            // untuk pengecekan hasilnya
-            // dd($perangkingan);
+                // cara menggunakan perangkingan.
+                // (jika akan menggunakan foreach perhatikan cara pemanggilan variable pada butir preferensi di bawah/ fungsi nilaiPre)
+                $perangkingan = collect($hasil_preferensi)->sortByDesc('nilai_preferensi')->values()->toArray();
+                // untuk pengecekan hasilnya
+                // dd($perangkingan);
             }
             if(isset($hasil_normalisasi)){
                 return view('admin.penilaian.klasifikasi', compact(['kriteria', 'eval_pegawai', 'tampil_normalisasi', 'perangkingan']));
@@ -145,27 +145,38 @@ class KlasifikasiController extends Controller
                 'nama' => $nama,
             ];
 
-            $masuk_database[$key] =[
+            $masuk_database = [
                 'nilai_preferensi' => array_sum($butir_preferensi),
                 'id_pegawai' => $id_pegawai,
                 'bulan' => $bulan,
                 'tahun' => $tahun,
             ];
+            DB::table('preferensi')
+                ->updateOrInsert(
+                    ['id_pegawai' => $id_pegawai, 'bulan' => $bulan, 'tahun' => $tahun],
+                    $masuk_database
+                );
+            //ini tidak bisa dipake karna harus nambah kolom create_at sama update_at di DB note: MALAS wkwk
+            // Preferensi::updateOrCreate(['id_pegawai' => $id_pegawai, 'bulan' => $bulan, 'tahun' => $tahun], $masuk_database);
         }
-        // dd($bulan);
+        // dd($id_pegawai);
 
-        $data_preferensi = Preferensi::where('bulan', $bulan)->get();
+        // $data_preferensi = Preferensi::where('bulan', $bulan)->get();
 
-        // jika ada harusnya update dulu baru return
-        if ($data_preferensi->value('id') == null) {
-                Preferensi::Insert($masuk_database);
-                return $preferensi_pegawai;
-        }else{
-            foreach ($data_preferensi as $key => $pre) {
-                $data = collect($preferensi_pegawai)->where('id_pegawai', $pre->id_pegawai)->toArray();
-                Preferensi::find($pre->id)->update($data);
-            }
-            return $preferensi_pegawai;
-        }
+        // // dd($data_preferensi);
+
+        // // jika ada harusnya update dulu baru return
+        // if ($data_preferensi->value('id') == null) {
+        //         Preferensi::Insert($masuk_database);
+        // }else{
+        //     // harusnya insert kalau ga ada datanya. trus update waktu ada datanya
+        //     foreach ($data_preferensi as $key => $pre) {
+        //         $data = collect($preferensi_pegawai)->where('id_pegawai', $pre->id_pegawai)->toArray();
+        //         // Preferensi::find($pre->id)->update($data);
+        //         Preferensi::updateOrCreate(['id' => $pre->id],$data);
+        //         // dd(Preferensi::find($pre->id));
+        //     }
+        // }
+        return $preferensi_pegawai;
     }
 }
