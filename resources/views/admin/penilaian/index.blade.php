@@ -31,7 +31,9 @@
                     </div>
                     @endif
                     <a href="{{ route('penilaian.create') }}"><button class="btn btn-primary" style="width: 200px" type="button">
-                        Tambah Penilaian Pegawai Honorer</button></a> <br> 
+                        Tambah Penilaian Pegawai Honorer</button></a> 
+                        <br> 
+                        
                         <br>
                         <!-- Table with stripped rows -->
                         <table class="table datatable">

@@ -22,6 +22,7 @@ class PenggunaController extends Controller
     public function store(Request $request) {
         DB::table('users')->insert([
             'name' => $request->name,
+            'nip' => $request->nip,
             'email' => $request->email,
             'type' => $request->type,
             'jabatan' => $request->jabatan,
@@ -40,6 +41,7 @@ class PenggunaController extends Controller
     public function update(Request $request) {
         DB::table('users')->where('id',$request->id)->update([
             'name' => $request->name,
+            'nip' => $request->nip,
             'email' => $request->email,
             'type' => $request->type,
             'jabatan' => $request->jabatan,

@@ -23,7 +23,57 @@
             <div class="row">
                 {{-- Create Form Pengalaman Kerja --}}
                 <div class="card">
+                    
                     <div class="card-body">
+                        <br>
+                        {{-- Modal Keterangan Sub Bobot --}}
+                                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#basicModal"><i class="ri-error-warning-fill"></i> Ket Sub Bobot</button>
+                                <div class="modal fade" id="basicModal" tabindex="-1">
+                                    <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                        <h5 class="modal-title">Keterangan Sub Bobot Kriteria</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <table class="table table-striped" style="text-align: center">
+                                                <thead>
+                                                <tr>
+                                                    <th scope="col">Nilai</th>
+                                                    <th scope="col">Bobot</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <td>1-20</td>
+                                                    <td> 1 </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>21-40</td>
+                                                    <td> 2 </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>41-60</td>
+                                                    <td> 3 </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>61-72</td>
+                                                    <td> 4 </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>73-100</td>
+                                                    <td> 5 </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                            <!-- End Basic Modal-->
                         <h5 class="card-title">
                             {{ isset($admin_lecturer) ? 'Mengubah' : 'Memilih' }} Nama Pegawai
                         </h5>

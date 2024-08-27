@@ -53,6 +53,11 @@
                                 value="{{ isset($users) ? $users->name : '' }}" required>
                             </div>
                             <div class="col-12">
+                                <label for="cname" class="form-label">NIP</label>
+                                <input type="text" class="form-control" id="nip" name="nip" minlength="5"
+                                value="{{ isset($users) ? $users->nip : '' }}" required>
+                            </div>
+                            <div class="col-12">
                                 <label for="cname" class="form-label">Email
                                     <span class="required">*</span></label>
                                 <input type="email" class="form-control" id="email" name="email" minlength="2"
@@ -65,18 +70,26 @@
                                     <option selected disabled value="">Pilih Jabatan</option>
                                     <option value="Administrator" {{ (isset($users) && $users->jabatan == "Administrator")
                                         ? 'selected' : '' }}>Administrator</option>
-                                    <option value="Ketua/Wakil Ketua" {{ (isset($users) && $users->jabatan == "Ketua/Wakil Ketua")
-                                        ? 'selected' : '' }}>|-- Ketua/Wakil Ketua</option>
-                                    <option value="Panitera/Sekretaris" {{ (isset($users) && $users->jabatan == "Panitera/Sekretaris")
-                                        ? 'selected' : '' }}>|-- |-- Panitera/Sekretaris</option>
+                                    <option value="Ketua" {{ (isset($users) && $users->jabatan == "Ketua")
+                                        ? 'selected' : '' }}>|-- Ketua</option>
+                                    <option value="Wakil Ketua" {{ (isset($users) && $users->jabatan == "Wakil Ketua")
+                                        ? 'selected' : '' }}>|-- Wakil Ketua</option>
+                                    <option value="Panitera" {{ (isset($users) && $users->jabatan == "Panitera")
+                                        ? 'selected' : '' }}>|-- |-- Panitera</option>
+                                    <option value="Sekretaris" {{ (isset($users) && $users->jabatan == "Sekretaris")
+                                        ? 'selected' : '' }}>|-- |-- Sekretaris</option>
                                     <option value="Kasubag Kepegawaian" {{ (isset($users) && $users->jabatan == "Kasubag Kepegawaian")
                                         ? 'selected' : '' }}>|-- |-- |-- Kasubag Kepegawaian</option>
                                     <option value="Kasubag Umum & Keuangan" {{ (isset($users) && $users->jabatan == "Kasubag Umum & Keuangan")
                                         ? 'selected' : '' }}>|-- |-- |-- Kasubag Umum & Keuangan</option>
+                                    <option value="Kasubag PTIP" {{ (isset($users) && $users->jabatan == "Kasubag PTIP")
+                                        ? 'selected' : '' }}>|-- |-- |-- Kasubag PTIP</option>
                                     <option value="Panmud Perdata" {{ (isset($users) && $users->jabatan == "Panmud Perdata")
                                         ? 'selected' : '' }}>|-- |-- |-- Panmud Perdata</option>
                                     <option value="Panmud Pidana" {{ (isset($users) && $users->jabatan == "Panmud Pidana")
                                         ? 'selected' : '' }}>|-- |-- |-- Panmud Pidana</option>
+                                    <option value="Panmud Hukum" {{ (isset($users) && $users->jabatan == "Panmud Hukum")
+                                        ? 'selected' : '' }}>|-- |-- |-- Panmud Hukum</option>
                                     <option value="Honorer Dipa" {{ (isset($users) && $users->jabatan == "Honorer Dipa")
                                         ? 'selected' : '' }}>|-- |-- |-- |-- Honorer Dipa</option>
                                     <option value="Honorer Non-Dipa" {{ (isset($users) && $users->jabatan == "Honorer Non-Dipa")

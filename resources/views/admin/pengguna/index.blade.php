@@ -35,6 +35,7 @@
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col"><i class="bi bi-bag-dash"></i> Nama</th>
+                            <th scope="col"><i class="bi bi-bag-dash"></i> NIP</th>
                             <th scope="col"><i class="bi bi-receipt"></i> Email</th>
                             <th scope="col"><i class="bi bi-emoji-sunglasses"></i> Jabatan</th>
                             <th scope="col"><i class="ri-organization-chart"></i> Role</th>
@@ -47,6 +48,7 @@
                             <tr>
                                 <th scope="row">{{ ++$no }}</th>
                                 <td>{{ $item->name }}</td>
+                                <td>{{ $item->nip }}</td>
                                 <td>{{ $item->email }}</td>
                                 <td>{{ $item->jabatan }}</td>
                                 <td>
