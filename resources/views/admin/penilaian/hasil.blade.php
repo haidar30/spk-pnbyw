@@ -58,6 +58,62 @@
     </div>
 </section>
 
+<section>
+    <div class="card">
+        <div class="card-body">
+            @if (isset($preferensi_perbulan))
+                <div class="card">
+                    <div class="card-header">
+                        <H5>Nilai Preferensi Bulanan</H5>
+                    </div>
+                    <div class="card-title">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col" rowspan="2">No</th>
+                                    <th scope="col" rowspan="2">Nama Pegawai</th>
+                                    <th scope="col" class="text-center" colspan="12">Bulan</th>
+                                </tr>
+                                <tr>
+                                    <th scope="col">Jan</th>
+                                    <th scope="col">Feb</th>
+                                    <th scope="col">Mar</th>
+                                    <th scope="col">Apr</th>
+                                    <th scope="col">Mei</th>
+                                    <th scope="col">Jun</th>
+                                    <th scope="col">Jul</th>
+                                    <th scope="col">Aug</th>
+                                    <th scope="col">Sept</th>
+                                    <th scope="col">Okt</th>
+                                    <th scope="col">Nov</th>
+                                    <th scope="col">Des</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @forelse ($preferensi_perbulan as $k => $preferensi)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $k }}</td>
+                                    @foreach ($preferensi as $k => $item)
+                                        <td>
+                                            {{ $item }}
+                                        </td>
+                                    @endforeach
+                                    </tr>
+                                    @empty
+                                    <tr>
+                                        <td colspan="14">Tidak ada data</td>
+                                    </tr>
+                                @endforelse
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            @endif
+        </div>
+    </div>
+</section>
+
 <section class="section">
     <div class="row">
         <div class="col-lg-12">
