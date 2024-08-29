@@ -182,6 +182,9 @@
                                             <th scope="col">Peringkat</th>
                                             <th scope="col">Nama Pegawai</th>
                                             <th scope="col">Nilai Preferensi</th>
+                                            @if (!empty($perangkingan))
+                                                <th scope="col">Action</th>
+                                            @endif
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -190,6 +193,12 @@
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $rank['nama'] }}</td>
                                             <td>{{ $rank['nilai_preferensi'] }}</td>
+                                            <td>
+                                                @if (!empty($perangkingan))
+                                                    <a href="{{ url('admin/cetak') . '/' . $rank['id_pegawai'] . '/' . $rank['bulan'] }}" class="btn btn-warning" target="_blank">Cetak PDF</a>
+                                                @endif
+                                            </td>
+                                            
                                             </tr>
                                             @empty
                                             <tr>

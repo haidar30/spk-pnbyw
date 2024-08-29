@@ -56,6 +56,8 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::resource('admin/hasil', HasilController::class);
     Route::resource('admin/pengguna', PenggunaController::class);
     Route::resource('admin/laporan', LaporanController::class);
+    Route::get('/admin/cetak/{id}/{bulan}', [HasilController::class, 'cetak'])->name('admin.hasil.cetak');
+    Route::get('/admin/cetak_pertahun/{tahun}', [HasilController::class, 'cetak_pertahun'])->name('admin.hasil.cetak_pertahun');
 });
 
 //Superadmin Routes List

@@ -142,6 +142,7 @@ class KlasifikasiController extends Controller
             $preferensi_pegawai[$key] = [
                 'nilai_preferensi' => array_sum($butir_preferensi),
                 'id_pegawai' => $id_pegawai,
+                'bulan' => $bulan,
                 'nama' => $nama,
             ];
 

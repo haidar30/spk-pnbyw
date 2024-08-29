@@ -47,13 +47,14 @@
                         <div class="row mb-3 text-center">
                             <div class="col-sm-12">
                                 <button type="submit" style="width: 200px" class="btn btn-primary">Cari Penilaian</button>
+                                @if (!empty($tampil_preferensi))
+                                    <a href="{{ url('admin/cetak_pertahun') . '/' . $tahun  }}" class="btn btn-warning" target="_blank">Cetak PDF</a>
+                                @endif
                             </div>
                         </div>
                     </form>
-
                 </div>
             </div>
-
         </div>
     </div>
 </section>
@@ -90,11 +91,11 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse ($preferensi_perbulan as $k => $preferensi)
+                                @forelse ($tampil_preferensi as $k => $preferensi)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $k }}</td>
-                                    @foreach ($preferensi as $k => $item)
+                                    <td>{{ $preferensi['nama'] }}</td>
+                                    @foreach ($preferensi_perbulan[$k] as $item)
                                         <td>
                                             {{ $item }}
                                         </td>
@@ -115,46 +116,39 @@
 </section>
 
 <section class="section">
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="row">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="card">
-                            <div class="card-title">
-                                <div class="card">
-                                    <table class="table table-striped">
-                                        <thead>
-                                        <tr>
-                                            <th scope="col">Rangking</th>
-                                            <th scope="col">Nama Pegawai</th>
-                                            <th scope="col">Nilai</th>
-                                            <th scope="col">Perpanjangan</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                            @forelse ($tampil_preferensi as $item)
-                                            <tr>
-                                                <td>{{ $loop->iteration }}</td>
-                                                <td>{{ $item['nama'] }}</td>
-                                                <td>{{ round($item['nilai_preferensi'], 2) }}</td>
-                                                <td>{{ $item['kontrak'] }}</td>
-                                                <td></td>
-                                                <td></td>
-                                                @foreach ($kriteria as $item)
-
-                                                @endforeach
-                                                </tr>
-                                                @empty
-                                                <tr>
-                                                    <td colspan="{{ count($kriteria) + 2 }}">Tidak ada data</td>
-                                                </tr>
-                                            @endforelse
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
+    <div class="card">
+        <div class="card-body">
+            <div class="card">
+                <div class="card-header">
+                    <H5>Nilai Preferensi Tahunan</H5>
+                </div>
+                <div class="card-title">
+                    <div class="card">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th scope="col">Rangking</th>
+                                <th scope="col">Nama Pegawai</th>
+                                <th scope="col">Nilai</th>
+                                <th scope="col">Perpanjangan</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                @forelse ($tampil_preferensi as $item)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $item['nama'] }}</td>
+                                    <td>{{ round($item['nilai_preferensi'], 2) }}</td>
+                                    <td>{{ $item['kontrak'] }}</td>
+                                    <td></td>
+                                </tr>
+                                    @empty
+                                    <tr>
+                                        <td colspan="4">Tidak ada data</td>
+                                    </tr>
+                                @endforelse
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
