@@ -132,52 +132,92 @@ class KlasifikasiController extends Controller
         foreach ($data_normalisasi as $key => $value) {
             foreach ($value as $k => $butir_nilai) {
                 // cara menggunakan forech yg tepat untuk method collect() karena dgn tanda panah tidak dapat dijalankan
-                $butir_preferensi [$k] = $butir_nilai['bobot'] * $butir_nilai['normalisasi'];
+                $butir_preferensi[$k] = $butir_nilai['bobot'] * $butir_nilai['normalisasi'];
                 $id_pegawai = $butir_nilai['id_pegawai'];
                 $nama = $butir_nilai['nama'];
                 $bulan = $butir_nilai['bulan'];
                 $tahun = substr($butir_nilai['bulan'], 0, 4);
             }
+            
+            // Hitung nilai preferensi dan ubah skalanya menjadi 0 - 100
+            $nilai_preferensi = array_sum($butir_preferensi) * 100;
+    
             // data hasil preferensi
             $preferensi_pegawai[$key] = [
-                'nilai_preferensi' => array_sum($butir_preferensi),
+                'nilai_preferensi' => $nilai_preferensi,
                 'id_pegawai' => $id_pegawai,
                 'bulan' => $bulan,
                 'nama' => $nama,
             ];
-
+    
             $masuk_database = [
-                'nilai_preferensi' => array_sum($butir_preferensi),
+                'nilai_preferensi' => $nilai_preferensi,
                 'id_pegawai' => $id_pegawai,
                 'bulan' => $bulan,
                 'tahun' => $tahun,
             ];
+    
             DB::table('preferensi')
                 ->updateOrInsert(
                     ['id_pegawai' => $id_pegawai, 'bulan' => $bulan, 'tahun' => $tahun],
                     $masuk_database
                 );
-            //ini tidak bisa dipake karna harus nambah kolom create_at sama update_at di DB note: MALAS wkwk
-            // Preferensi::updateOrCreate(['id_pegawai' => $id_pegawai, 'bulan' => $bulan, 'tahun' => $tahun], $masuk_database);
         }
-        // dd($id_pegawai);
-
-        // $data_preferensi = Preferensi::where('bulan', $bulan)->get();
-
-        // // dd($data_preferensi);
-
-        // // jika ada harusnya update dulu baru return
-        // if ($data_preferensi->value('id') == null) {
-        //         Preferensi::Insert($masuk_database);
-        // }else{
-        //     // harusnya insert kalau ga ada datanya. trus update waktu ada datanya
-        //     foreach ($data_preferensi as $key => $pre) {
-        //         $data = collect($preferensi_pegawai)->where('id_pegawai', $pre->id_pegawai)->toArray();
-        //         // Preferensi::find($pre->id)->update($data);
-        //         Preferensi::updateOrCreate(['id' => $pre->id],$data);
-        //         // dd(Preferensi::find($pre->id));
-        //     }
-        // }
         return $preferensi_pegawai;
     }
+    
+
+    // private function nilaiPreferensi($data_normalisasi) {
+    //     // mengalikan bobot dengan hasil normalisasi untuk mendapatkan nilai preferensi
+    //     foreach ($data_normalisasi as $key => $value) {
+    //         foreach ($value as $k => $butir_nilai) {
+    //             // cara menggunakan forech yg tepat untuk method collect() karena dgn tanda panah tidak dapat dijalankan
+    //             $butir_preferensi [$k] = $butir_nilai['bobot'] * $butir_nilai['normalisasi'];
+    //             $id_pegawai = $butir_nilai['id_pegawai'];
+    //             $nama = $butir_nilai['nama'];
+    //             $bulan = $butir_nilai['bulan'];
+    //             $tahun = substr($butir_nilai['bulan'], 0, 4);
+    //         }
+    //         // data hasil preferensi
+    //         $preferensi_pegawai[$key] = [
+    //             'nilai_preferensi' => array_sum($butir_preferensi),
+    //             'id_pegawai' => $id_pegawai,
+    //             'bulan' => $bulan,
+    //             'nama' => $nama,
+    //         ];
+
+    //         $masuk_database = [
+    //             'nilai_preferensi' => array_sum($butir_preferensi),
+    //             'id_pegawai' => $id_pegawai,
+    //             'bulan' => $bulan,
+    //             'tahun' => $tahun,
+    //         ];
+    //         DB::table('preferensi')
+    //             ->updateOrInsert(
+    //                 ['id_pegawai' => $id_pegawai, 'bulan' => $bulan, 'tahun' => $tahun],
+    //                 $masuk_database
+    //             );
+    //         //ini tidak bisa dipake karna harus nambah kolom create_at sama update_at di DB note: MALAS wkwk
+    //         // Preferensi::updateOrCreate(['id_pegawai' => $id_pegawai, 'bulan' => $bulan, 'tahun' => $tahun], $masuk_database);
+    //     }
+    //     // dd($id_pegawai);
+
+    //     // $data_preferensi = Preferensi::where('bulan', $bulan)->get();
+
+    //     // // dd($data_preferensi);
+
+    //     // // jika ada harusnya update dulu baru return
+    //     // if ($data_preferensi->value('id') == null) {
+    //     //         Preferensi::Insert($masuk_database);
+    //     // }else{
+    //     //     // harusnya insert kalau ga ada datanya. trus update waktu ada datanya
+    //     //     foreach ($data_preferensi as $key => $pre) {
+    //     //         $data = collect($preferensi_pegawai)->where('id_pegawai', $pre->id_pegawai)->toArray();
+    //     //         // Preferensi::find($pre->id)->update($data);
+    //     //         Preferensi::updateOrCreate(['id' => $pre->id],$data);
+    //     //         // dd(Preferensi::find($pre->id));
+    //     //     }
+    //     // }
+    //     return $preferensi_pegawai;
+    // }
 }

@@ -127,7 +127,7 @@ class HasilController extends Controller
             }
             // menghitung rata-rata per bulan
             $avg = $value->avg('nilai_preferensi');
-            $avg >= 0.7 ? $kontrak = 'diperpanjang' : $kontrak = 'tidak diperpanjang';
+            $avg >= 70 ? $kontrak = 'diperpanjang' : $kontrak = 'tidak diperpanjang';
 
             $preferensi[$key] = [
                 'id_pegawai' => $value->value('id'),
